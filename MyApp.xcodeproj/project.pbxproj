@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		6C392FC5AF0C61509011C30D /* Pods_MyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E8000CCB9AE328B83764288 /* Pods_MyApp.framework */; };
 		D028ADD12AA8716ECB14FFD9 /* Pods_MyApp_MyAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49F1AB05FCB88523C52A0ED /* Pods_MyApp_MyAppTests.framework */; };
+		E3EBBD24231624F10076D1FD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EBBD22231624F10076D1FD /* HomeViewController.swift */; };
+		E3EBBD25231624F10076D1FD /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3EBBD23231624F10076D1FD /* HomeViewController.xib */; };
+		E3EBBD28231624FE0076D1FD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EBBD26231624FE0076D1FD /* MapViewController.swift */; };
+		E3EBBD29231624FE0076D1FD /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3EBBD27231624FE0076D1FD /* MapViewController.xib */; };
+		E3EBBD2C2316250A0076D1FD /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EBBD2A2316250A0076D1FD /* FavoriteViewController.swift */; };
+		E3EBBD2D2316250A0076D1FD /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3EBBD2B2316250A0076D1FD /* FavoriteViewController.xib */; };
+		E3EBBD30231625180076D1FD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EBBD2E231625180076D1FD /* ProfileViewController.swift */; };
+		E3EBBD31231625180076D1FD /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3EBBD2F231625180076D1FD /* ProfileViewController.xib */; };
 		EC0105521E8F8AE000CE013D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC0105401E8F8ADF00CE013D /* Assets.xcassets */; };
 		EC0105541E8F8AE000CE013D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0105441E8F8ADF00CE013D /* AppDelegate.swift */; };
 		EC2C488D1EAF011C00B22F4B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2C488C1EAF011C00B22F4B /* Utils.swift */; };
@@ -67,6 +75,14 @@
 		47FCF93A9948D710C06CECAF /* Pods-MyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyApp/Pods-MyApp.release.xcconfig"; sourceTree = "<group>"; };
 		48F8D478234569385F88AC15 /* Pods-MyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyApp/Pods-MyApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7E8000CCB9AE328B83764288 /* Pods_MyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3EBBD22231624F10076D1FD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E3EBBD23231624F10076D1FD /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		E3EBBD26231624FE0076D1FD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		E3EBBD27231624FE0076D1FD /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		E3EBBD2A2316250A0076D1FD /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		E3EBBD2B2316250A0076D1FD /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
+		E3EBBD2E231625180076D1FD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		E3EBBD2F231625180076D1FD /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		EC0105401E8F8ADF00CE013D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC0105421E8F8ADF00CE013D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC0105441E8F8ADF00CE013D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +150,42 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E3EBBD1E231624BC0076D1FD /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E3EBBD22231624F10076D1FD /* HomeViewController.swift */,
+				E3EBBD23231624F10076D1FD /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E3EBBD1F231624C10076D1FD /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				E3EBBD26231624FE0076D1FD /* MapViewController.swift */,
+				E3EBBD27231624FE0076D1FD /* MapViewController.xib */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		E3EBBD20231624D20076D1FD /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				E3EBBD2A2316250A0076D1FD /* FavoriteViewController.swift */,
+				E3EBBD2B2316250A0076D1FD /* FavoriteViewController.xib */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		E3EBBD21231624DA0076D1FD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E3EBBD2E231625180076D1FD /* ProfileViewController.swift */,
+				E3EBBD2F231625180076D1FD /* ProfileViewController.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		E7A23BB3FDC7E19F0663DF69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +240,10 @@
 		EC0105431E8F8ADF00CE013D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E3EBBD21231624DA0076D1FD /* Profile */,
+				E3EBBD20231624D20076D1FD /* Favorite */,
+				E3EBBD1F231624C10076D1FD /* Map */,
+				E3EBBD1E231624BC0076D1FD /* Home */,
 				EC0105441E8F8ADF00CE013D /* AppDelegate.swift */,
 				EC5337BF1EF7933A00ACE038 /* Base */,
 				F1C6352A1EF141F300D0A1A0 /* Storyboard */,
@@ -411,6 +467,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -430,9 +487,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3EBBD31231625180076D1FD /* ProfileViewController.xib in Resources */,
 				EC0105521E8F8AE000CE013D /* Assets.xcassets in Resources */,
 				EC5337BA1EF78E4D00ACE038 /* Localizable.strings in Resources */,
+				E3EBBD2D2316250A0076D1FD /* FavoriteViewController.xib in Resources */,
 				F1C6352C1EF141F300D0A1A0 /* LaunchScreen.storyboard in Resources */,
+				E3EBBD29231624FE0076D1FD /* MapViewController.xib in Resources */,
+				E3EBBD25231624F10076D1FD /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3EBBD2C2316250A0076D1FD /* FavoriteViewController.swift in Sources */,
 				EC5337C11EF7939C00ACE038 /* TableCell.swift in Sources */,
 				ECF23AC31E9B9264008C23C1 /* StringExt.swift in Sources */,
 				ECEC0C5E1ED44D7700F6760A /* MapperExt.swift in Sources */,
@@ -572,8 +634,11 @@
 				EC332A481EA0A8CB0011DF1E /* Api.swift in Sources */,
 				ECD1C29B1EA725B1000EC989 /* InputViewExt.swift in Sources */,
 				ECF23AB41E9B869B008C23C1 /* ApiManager.swift in Sources */,
+				E3EBBD28231624FE0076D1FD /* MapViewController.swift in Sources */,
+				E3EBBD30231625180076D1FD /* ProfileViewController.swift in Sources */,
 				ECEC0C5A1ED44D4100F6760A /* UIViewControllerExt.swift in Sources */,
 				ECEC0C581ED44C5D00F6760A /* String.swift in Sources */,
+				E3EBBD24231624F10076D1FD /* HomeViewController.swift in Sources */,
 				EC5337BE1EF78FEA00ACE038 /* Font.swift in Sources */,
 				ECF23ABB1E9B89B2008C23C1 /* ResponseSerializer.swift in Sources */,
 				ECF23ABE1E9B8A6A008C23C1 /* Error.swift in Sources */,
