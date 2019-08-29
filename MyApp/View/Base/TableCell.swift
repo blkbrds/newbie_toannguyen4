@@ -9,21 +9,20 @@
 import UIKit
 import MVVM
 
-class TableCell: UITableViewCell, MVVM.View {
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configView()
+final class TableCell: UITableViewCell, MVVM.View {
+  var viewModel = SnippetCellViewModel(snippet: nil) {
+    didSet {
+      updateView()
     }
+  }
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        configView()
-    }
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    updateView()
+  }
 
-    private func configView() {
-        textLabel?.font = App.Font.tableCellTextLabel
-        textLabel?.textColor = App.Color.tableCellTextLabel
-        detailTextLabel?.font = App.Font.tableCellTextLabel
-        detailTextLabel?.textColor = App.Color.tableCellTextLabel
-    }
+  func updateView() {
+    textLabel?.text = viewModel.title
+    detailTextLabel?.text = viewModel.des
+  }
 }

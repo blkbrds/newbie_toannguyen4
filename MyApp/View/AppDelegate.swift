@@ -13,22 +13,18 @@ let networkIndicator = NetworkActivityIndicatorManager.shared
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-  
   var window: UIWindow?
-  
   static let shared: AppDelegate = {
     guard let shared = UIApplication.shared.delegate as? AppDelegate else {
       fatalError("Cannot cast `UIApplication.shared.delegate` to `AppDelegate`.")
     }
     return shared
   }()
-  
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     configNetwork()
     configTabarController()
     return true
   }
-  
   private func configTabarController() {
     //create tabar controller
     //config tab Home
