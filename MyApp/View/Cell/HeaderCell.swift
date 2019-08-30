@@ -9,10 +9,10 @@
 import UIKit
 
 class HeaderCell: UITableViewCell, UIScrollViewDelegate {
-
-  @IBOutlet weak var viewScroll: UIView!
   @IBOutlet weak var scrollView: UIScrollView!
+  @IBOutlet weak var viewScroll: UIView!
   @IBOutlet weak var pageControl: UIPageControl!
+
   override func awakeFromNib() {
         super.awakeFromNib()
         setupScroll()
@@ -20,8 +20,10 @@ class HeaderCell: UITableViewCell, UIScrollViewDelegate {
 
   func setupScroll() {
     self.scrollView.frame = CGRect(x: 0, y: 0, width: self.viewScroll.frame.width, height: self.viewScroll.frame.height)
-    let scrollViewWidth: CGFloat = self.scrollView.frame.width
-    let scrollViewHeight: CGFloat = self.scrollView.frame.height
+    let scrollViewWidth: CGFloat = self.viewScroll.frame.width
+    let scrollViewHeight: CGFloat = 210//self.viewScroll.frame.height
+    print(self.scrollView.frame.height)
+    print(self.viewScroll.frame.height)
 
     let imgOne = UIImageView(frame: CGRect(x: 0, y: 0, width: scrollViewWidth, height: scrollViewHeight))
     imgOne.image = UIImage(named: "slide1")

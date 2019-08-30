@@ -30,7 +30,6 @@ class YoutubeCell: UITableViewCell, MVVM.View {
 
   func updateView() {
     self.labelTitle.text = viewModel.title
-//    self.labelDesc.text = viewModel.des
     self.labelChanel.text = viewModel.channelTitle
     self.imageThumbnail.sd_setImage(with: URL(string: viewModel.thumbnails), placeholderImage: UIImage(named: "youtube"))
   }

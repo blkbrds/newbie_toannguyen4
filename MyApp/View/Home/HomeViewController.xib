@@ -12,11 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="MyApp" customModuleProvider="target">
             <connections>
-                <outlet property="pageControl" destination="qSa-Iy-3rt" id="QZG-a0-g6w"/>
-                <outlet property="scrollView" destination="vth-GQ-AGJ" id="3l2-XM-aTH"/>
+                <outlet property="collectionView" destination="VJZ-Zs-HJI" id="o8Y-If-piU"/>
                 <outlet property="tableView" destination="DvG-zv-5eZ" id="qc1-ia-NnI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="viewScroll" destination="Utu-c4-F74" id="sen-SD-vLB"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -24,47 +22,39 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Utu-c4-F74">
-                    <rect key="frame" x="0.0" y="44" width="414" height="200"/>
-                    <subviews>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vth-GQ-AGJ">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
-                        </scrollView>
-                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="qSa-Iy-3rt">
-                            <rect key="frame" x="132" y="148" width="150" height="37"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="150" id="fbV-FZ-20W"/>
-                            </constraints>
-                        </pageControl>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="qSa-Iy-3rt" secondAttribute="bottom" constant="15" id="54u-0G-6Mm"/>
-                        <constraint firstItem="qSa-Iy-3rt" firstAttribute="centerX" secondItem="Utu-c4-F74" secondAttribute="centerX" id="6Eh-vP-hfe"/>
-                        <constraint firstAttribute="trailing" secondItem="vth-GQ-AGJ" secondAttribute="trailing" id="Lo7-lN-kGO"/>
-                        <constraint firstItem="vth-GQ-AGJ" firstAttribute="top" secondItem="Utu-c4-F74" secondAttribute="top" id="TVW-8k-p5Q"/>
-                        <constraint firstAttribute="height" constant="200" id="b43-0g-Vc0"/>
-                        <constraint firstItem="vth-GQ-AGJ" firstAttribute="leading" secondItem="Utu-c4-F74" secondAttribute="leading" id="elJ-w7-p2s"/>
-                        <constraint firstAttribute="bottom" secondItem="vth-GQ-AGJ" secondAttribute="bottom" id="rQN-Ol-Z9p"/>
-                    </constraints>
-                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DvG-zv-5eZ">
-                    <rect key="frame" x="0.0" y="244" width="414" height="618"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="QBa-9s-51k"/>
                         <outlet property="delegate" destination="-1" id="SBv-FR-Zt8"/>
                     </connections>
                 </tableView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VJZ-Zs-HJI">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GEK-9t-yJB">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="7xI-NO-CLi"/>
+                        <outlet property="delegate" destination="-1" id="aZZ-ba-cuR"/>
+                    </connections>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="VJZ-Zs-HJI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3E7-jx-cQo"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="DvG-zv-5eZ" secondAttribute="bottom" id="5VS-P4-pHV"/>
                 <constraint firstItem="DvG-zv-5eZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8Qd-tS-asE"/>
-                <constraint firstItem="DvG-zv-5eZ" firstAttribute="top" secondItem="Utu-c4-F74" secondAttribute="bottom" id="OCa-4J-KOV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="VJZ-Zs-HJI" secondAttribute="bottom" id="GSj-gE-Ks1"/>
+                <constraint firstItem="DvG-zv-5eZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="LPW-Le-6ef"/>
+                <constraint firstItem="VJZ-Zs-HJI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Lzg-35-k43"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DvG-zv-5eZ" secondAttribute="trailing" id="afF-AL-XY5"/>
-                <constraint firstItem="Utu-c4-F74" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lBg-2p-5e9"/>
-                <constraint firstItem="Utu-c4-F74" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ptm-Y4-fOy"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Utu-c4-F74" secondAttribute="trailing" id="xtt-KX-EDQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VJZ-Zs-HJI" secondAttribute="trailing" id="he8-xt-DOg"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="133.92857142857142"/>
