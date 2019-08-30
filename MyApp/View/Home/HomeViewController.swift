@@ -43,7 +43,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupRemainingNavItems(icon: "table")
     setupTableView()
     setupCollectionView()
     changeTypeDisplay()
@@ -81,7 +80,11 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
 
   func updateView() {
     guard isViewLoaded else { return }
-    tableView.reloadData()
+    if !isDisplayTable {
+      tableView.reloadData()
+    } else {
+      collectionView.reloadData()
+    }
     viewDidUpdated()
   }
 
@@ -164,16 +167,28 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
 
 extension HomeViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-      tableView.reloadData()
+
+
     viewModel.getSnippets(keySearch: searchText) { [weak self] (result) in
       guard let this = self else { return }
       switch result {
       case .success:
-        self!.tableView.reloadData()
+        if !self!.isDisplayTable {
+          self!.tableView.reloadData()
+        } else {
+          self!.collectionView.reloadData()
+        }
       case .failure:
         this.alert(error: "Can't load data!")
       }
       this.viewDidUpdated()
+    }
+    viewModel.fetch()
+
+    if !isDisplayTable {
+      tableView.reloadData()
+    } else {
+      collectionView.reloadData()
     }
   }
 
@@ -195,11 +210,20 @@ extension HomeViewController: UISearchBarDelegate {
       guard let this = self else { return }
       switch result {
       case .success:
-        self!.tableView.reloadData()
+        if !self!.isDisplayTable {
+          self!.tableView.reloadData()
+        } else {
+          self!.collectionView.reloadData()
+        }
       case .failure:
         this.alert(error: "Can't load data!")
       }
       this.viewDidUpdated()
+    }
+    if !isDisplayTable {
+      tableView.reloadData()
+    } else {
+      collectionView.reloadData()
     }
   }
 }
