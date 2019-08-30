@@ -5,6 +5,7 @@ final class Api {
     static let baseURL = "https://www.googleapis.com/youtube"
   }
   // MARK: - Services properties define
+  struct Downloader {}
 
   struct Snippet {
     var id: Int

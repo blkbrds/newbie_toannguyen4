@@ -29,7 +29,6 @@ class SnippetListViewModel: MVVM.ViewModel {
     guard let snippets = snippets else {
       return 0
     }
-    print(snippets.count)
     return snippets.count
   }
 
@@ -62,36 +61,56 @@ class SnippetListViewModel: MVVM.ViewModel {
 
   }
 
+  private func removeAllDataRealm() {
+    DispatchQueue.main.async {
+      do {
+        let realm = try Realm()
+        realm.deleteAll()
+      } catch {
+        print("Error with Realm")
+      }
+    }
+  }
+
   typealias GetSnippetCompletion = (SnippetResult) -> Void
 
   func getSnippets(completion: @escaping GetSnippetCompletion) {
     let params = Api.Snippet.QueryParams(
       token: "CBkQAA",
-      keySearch: "haytraochoanh",
+      keySearch: "PhanDinhTung",
       keyID: "AIzaSyDIJ9UssMoN9IfR9KnTc4lb3B9NtHpRF-c"
     )
+
+    //self.removeAllDataRealm()
+
     Api.Snippet.query(params: params) { (result) in
+      do {
+        try Realm().refresh()
+      } catch {
+        print("can not refresh")
+      }
+
       switch result {
       case .success(let data):
         if let dict = data as? JSObject {
           guard let items = dict["items"] as? JSArray else {
             return
           }
-          for item in items {
-            guard let snippet = item["snippet"] as? JSObject else {
-              return
-            }
-            DispatchQueue.main.async {
-              do {
-                let realm = try Realm()
-                try realm.write{
-                  realm.deleteAll()
-                  //let snippet = Snippet(json: snippet)
+
+          DispatchQueue.main.async {
+            do {
+              let realm = try Realm()
+              try realm.write{
+                realm.deleteAll()
+                for item in items {
+                  guard let snippet = item["snippet"] as? JSObject else {
+                    return
+                  }
                   realm.add(Snippet(json: snippet))
                 }
-              } catch {
-                print("Error with Realm")
               }
+            } catch {
+              print("Error with Realm")
             }
           }
         } else {

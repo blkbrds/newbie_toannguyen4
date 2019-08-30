@@ -15,18 +15,17 @@ final class SnippetCellViewModel: MVVM.ViewModel {
   var channelId = ""
   var title = ""
   var des = ""
-  //var thumbnails = ["":""]
+  var thumbnails = ""
   var channelTitle = ""
   var liveBroadcastContent = ""
 
   init(snippet: Snippet?) {
     guard let snippet = snippet else { return }
-    print(snippet.title)
     publishedAt = snippet.publishedAt
     channelId = snippet.channelId
     title = snippet.title
     des = snippet.des
-    //thumbnails = snippet.thumbnails
+    thumbnails = snippet.thumbnails
     channelTitle = snippet.channelTitle
     liveBroadcastContent = snippet.liveBroadcastContent
   }

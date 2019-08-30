@@ -24,7 +24,7 @@ target 'MyApp' do
     # Network
     pod 'Alamofire', '4.6.0' # Elegant HTTP Networking in Swift.
     pod 'AlamofireNetworkActivityIndicator', '2.2.0' # Controls the visibility of the network activity indicator on iOS using Alamofire.
-
+    pod 'SDWebImage', '~> 5.0'
     # Utils
     #pod 'SwiftLint', '0.25.0'
     pod 'SwiftLint'

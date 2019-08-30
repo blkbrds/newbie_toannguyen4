@@ -10,6 +10,11 @@ import UIKit
 import  MVVM
 
 class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
+  enum SectionTableView: Int {
+    case kHeaderSection = 0
+    case kYoutubeSection
+  }
+
   var viewModel = SnippetListViewModel() {
     didSet {
       updateView()
@@ -19,8 +24,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var pageControl: UIPageControl!
+  private var isDisplayTable = true
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupRemainingNavItems(icon: "table")
     setupScroll()
     setupTableView()
     viewModel.delegate = self
@@ -33,6 +40,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
       guard let this = self else { return }
       switch result {
       case .success:
+        self!.tableView.reloadData()
         break
       case .failure:
         print("loi")
@@ -51,11 +59,34 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
   private func setupTableView() {
     tableView.register(UINib(nibName: "YoutubeCell", bundle: nil), forCellReuseIdentifier: "YoutubeCell")
     tableView.rowHeight = UITableViewAutomaticDimension
-    tableView.estimatedRowHeight = 600
+    tableView.estimatedRowHeight = 120
     tableView.dataSource = self
     tableView.delegate = self
-
+    tableView.reloadData()
   }
+
+  func setupRemainingNavItems(icon: String) {
+    let rightIcon = UIButton(type: .custom)
+    rightIcon.setImage(UIImage (named: icon), for: .normal)
+    rightIcon.frame = CGRect(x: 0.0, y: 0.0, width: 30.0, height: 30.0)
+    rightIcon.addTarget(self, action: #selector(changeTypeDisplay), for: .touchUpInside)
+    let barButtonItem = UIBarButtonItem(customView: rightIcon)
+
+    self.navigationItem.rightBarButtonItem = barButtonItem
+  }
+
+  @objc func changeTypeDisplay() {
+    if isDisplayTable {
+      setupRemainingNavItems(icon: "collection")
+      isDisplayTable = false
+      tableView.isHidden = false
+    } else {
+      setupRemainingNavItems(icon: "table")
+      isDisplayTable = true
+      tableView.isHidden = true
+    }
+  }
+
   func setupScroll() {
     self.scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.viewScroll.frame.height)
     let scrollViewWidth: CGFloat = self.scrollView.frame.width
@@ -115,15 +146,18 @@ extension HomeViewController: ViewModelDelegate {
 extension HomeViewController: UITableViewDataSource {
 
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 1//viewModel.numberOfSections()
+    return viewModel.numberOfSections() + 1
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    print(viewModel.numberOfItems(inSection: section))
+    if section == SectionTableView.kHeaderSection.rawValue {
+      return 1
+    }
     return viewModel.numberOfItems(inSection: section)
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "YoutubeCell") as? YoutubeCell
       else { fatalError() }
     cell.viewModel = viewModel.viewModelForItem(at: indexPath)
@@ -135,5 +169,9 @@ extension HomeViewController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+  }
+
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 115
   }
 }

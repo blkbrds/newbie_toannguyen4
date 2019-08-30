@@ -22,14 +22,11 @@ final class Snippet: Object, Mappable {
   @objc dynamic var channelId = ""
   @objc dynamic var title = ""
   @objc dynamic var des = ""
-  //@objc dynamic var thumbnails = ["":""]
+  @objc dynamic var thumbnails = ""
   @objc dynamic var channelTitle = ""
   @objc dynamic var liveBroadcastContent = ""
 
-  typealias JSON = [String: Any]
-  //let snippets = List<Snippet>()
-
-  convenience init(json: JSON) {
+  convenience init(json: JSObject) {
     var schema: [String: Any] = [:]
     if let publishedAt = json["publishedAt"] {
       schema["publishedAt"] = publishedAt
@@ -40,8 +37,15 @@ final class Snippet: Object, Mappable {
     if let title = json["title"] {
       schema["title"] = title
     }
+    if let defaultUrl = json["thumbnails"] as? JSObject {
+      if let thumb = defaultUrl["medium"] as? JSObject {
+        if let thumbUrl = thumb["url"] {
+            schema["thumbnails"] = thumbUrl
+        }
+      }
+    }
     if let description = json["description"] {
-      schema["description"] = description
+      schema["des"] = description
     }
     if let channelTitle = json["channelTitle"] {
       schema["channelTitle"] = channelTitle
@@ -57,7 +61,7 @@ final class Snippet: Object, Mappable {
     channelId <- map["channelId"]
     title <- map["title"]
     des <- map["description"]
-    //thumbnails <- map["thumbnails"]
+    thumbnails <- map["thumbnails"]
     channelTitle <- map["channelTitle"]
     liveBroadcastContent <- map["liveBroadcastContent"]
   }

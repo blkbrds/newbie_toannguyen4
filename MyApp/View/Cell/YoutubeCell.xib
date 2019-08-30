@@ -22,52 +22,44 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qQ-AY-zbO">
                         <rect key="frame" x="5" y="5" width="321" height="97.5"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kgp-d5-z0x">
-                                <rect key="frame" x="10" y="4" width="90" height="90"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youtube" translatesAutoresizingMaskIntoConstraints="NO" id="kgp-d5-z0x">
+                                <rect key="frame" x="10" y="-11.5" width="140" height="120.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="9BG-qw-0jR"/>
-                                    <constraint firstAttribute="height" constant="90" id="ex6-9s-NYr"/>
+                                    <constraint firstAttribute="width" constant="140" id="9BG-qw-0jR"/>
+                                    <constraint firstAttribute="height" constant="120" id="ex6-9s-NYr"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdg-XA-vz2">
-                                <rect key="frame" x="110" y="10" width="161" height="20.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Des" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIO-u5-iHa">
-                                <rect key="frame" x="110" y="40.5" width="201" height="17"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdg-XA-vz2">
+                                <rect key="frame" x="160" y="10" width="116" height="60"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chanel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Gu-w0-hWg">
-                                <rect key="frame" x="108" y="65.5" width="49" height="18"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <rect key="frame" x="160" y="75" width="131" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favoriteInActive" translatesAutoresizingMaskIntoConstraints="NO" id="fAs-Wc-7fd">
-                                <rect key="frame" x="281" y="10" width="30" height="30"/>
+                                <rect key="frame" x="286" y="10" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="dt1-Dt-MLO"/>
-                                    <constraint firstAttribute="width" constant="30" id="hKZ-Lz-McJ"/>
+                                    <constraint firstAttribute="height" constant="25" id="dt1-Dt-MLO"/>
+                                    <constraint firstAttribute="width" constant="25" id="hKZ-Lz-McJ"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="gdg-XA-vz2" firstAttribute="leading" secondItem="kgp-d5-z0x" secondAttribute="trailing" constant="10" id="2b0-s3-niu"/>
-                            <constraint firstItem="EIO-u5-iHa" firstAttribute="leading" secondItem="kgp-d5-z0x" secondAttribute="trailing" constant="10" id="3Vq-aI-t0J"/>
-                            <constraint firstItem="7Gu-w0-hWg" firstAttribute="leading" secondItem="kgp-d5-z0x" secondAttribute="trailing" constant="8" id="7ji-xa-MF7"/>
-                            <constraint firstItem="7Gu-w0-hWg" firstAttribute="top" secondItem="EIO-u5-iHa" secondAttribute="bottom" constant="8" id="AOU-Oa-30j"/>
                             <constraint firstItem="fAs-Wc-7fd" firstAttribute="leading" secondItem="gdg-XA-vz2" secondAttribute="trailing" constant="10" id="D5i-dO-H3J"/>
                             <constraint firstItem="kgp-d5-z0x" firstAttribute="leading" secondItem="4qQ-AY-zbO" secondAttribute="leading" constant="10" id="DXf-tg-jT4"/>
-                            <constraint firstItem="EIO-u5-iHa" firstAttribute="centerY" secondItem="kgp-d5-z0x" secondAttribute="centerY" id="MfV-D4-iRO"/>
+                            <constraint firstAttribute="trailing" secondItem="7Gu-w0-hWg" secondAttribute="trailing" constant="30" id="Jfm-4L-ybV"/>
+                            <constraint firstItem="gdg-XA-vz2" firstAttribute="height" secondItem="kgp-d5-z0x" secondAttribute="height" multiplier="1/2" id="Pvc-QW-vgp"/>
                             <constraint firstAttribute="trailing" secondItem="fAs-Wc-7fd" secondAttribute="trailing" constant="10" id="Q1C-Im-wnC"/>
                             <constraint firstItem="fAs-Wc-7fd" firstAttribute="top" secondItem="4qQ-AY-zbO" secondAttribute="top" constant="10" id="b9j-Mc-B0O"/>
-                            <constraint firstAttribute="trailing" secondItem="EIO-u5-iHa" secondAttribute="trailing" constant="10" id="cYo-gg-hl2"/>
+                            <constraint firstItem="7Gu-w0-hWg" firstAttribute="leading" secondItem="kgp-d5-z0x" secondAttribute="trailing" constant="10" id="gKy-jM-hTz"/>
                             <constraint firstItem="kgp-d5-z0x" firstAttribute="centerY" secondItem="4qQ-AY-zbO" secondAttribute="centerY" id="gnz-ll-8Fv"/>
-                            <constraint firstItem="EIO-u5-iHa" firstAttribute="top" secondItem="gdg-XA-vz2" secondAttribute="bottom" constant="10" id="j0b-Z6-vKQ"/>
+                            <constraint firstItem="7Gu-w0-hWg" firstAttribute="top" secondItem="gdg-XA-vz2" secondAttribute="bottom" constant="5" id="ibe-ct-g7h"/>
                             <constraint firstItem="gdg-XA-vz2" firstAttribute="top" secondItem="4qQ-AY-zbO" secondAttribute="top" constant="10" id="tAu-MW-Y0K"/>
                         </constraints>
                     </view>
@@ -84,7 +76,6 @@
                 <outlet property="imageFavorite" destination="fAs-Wc-7fd" id="Zvf-xf-sPp"/>
                 <outlet property="imageThumbnail" destination="kgp-d5-z0x" id="b5j-eV-OkU"/>
                 <outlet property="labelChanel" destination="7Gu-w0-hWg" id="5t1-xS-3qd"/>
-                <outlet property="labelDesc" destination="EIO-u5-iHa" id="r6Q-rt-jFO"/>
                 <outlet property="labelTitle" destination="gdg-XA-vz2" id="dtX-Vb-tRr"/>
             </connections>
             <point key="canvasLocation" x="145.6521739130435" y="117.85714285714285"/>
@@ -92,5 +83,6 @@
     </objects>
     <resources>
         <image name="favoriteInActive" width="25" height="25"/>
+        <image name="youtube" width="50" height="50"/>
     </resources>
 </document>

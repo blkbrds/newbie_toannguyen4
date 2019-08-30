@@ -21,7 +21,7 @@ extension Api.Snippet {
 
   @discardableResult
   static func query(params: Api.Snippet.QueryParams, completion: @escaping Completion) -> Request? {
-    let path = Api.Path.Snippet(token: params.token, keySearch: params.token, keyID: params.keyID)
+    let path = Api.Path.Snippet(token: params.token, keySearch: params.keySearch, keyID: params.keyID)
     return api.request(method: .get, urlString: path) { (result) in
       Mapper<Snippet>().map(result: result, type: .object, completion: { (result) in
         DispatchQueue.main.async {
