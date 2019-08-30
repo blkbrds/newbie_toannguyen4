@@ -55,13 +55,11 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
     refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
     refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     tableView.addSubview(refreshControl)
-    //collectionView.addSubview(refreshControl)
   }
 
   @objc func refresh(_ sender: Any) {
     DispatchQueue.main.async {
       self.tableView.reloadData()
-      //self.collectionView.reloadData()
       self.refreshControl.endRefreshing()
     }
   }
@@ -121,7 +119,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
   }
 
   public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    if(scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 0) {
+    if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 0 {
       self.heightSearchBar.constant = 44
     } else {
       self.heightSearchBar.constant = 0
@@ -253,7 +251,7 @@ extension HomeViewController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     // 1
-    let shareAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action:UITableViewRowAction, indexPath: IndexPath) -> Void in
+    let shareAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
       self.delete(index: indexPath.row)
       self.fetchSnippet()
       tableView.reloadData()

@@ -20,7 +20,6 @@ class YouTubeHorizinalCell: UITableViewCell, MVVM.View {
       updateView()
     }
   }
-  
   override func awakeFromNib() {
     super.awakeFromNib()
     updateView()
@@ -28,7 +27,6 @@ class YouTubeHorizinalCell: UITableViewCell, MVVM.View {
 
   func updateView() {
     self.labelTitle.text = viewModel.title
-    self.imageThumbnail.sd_setImage(with: URL(string: viewModel.thumbnails), placeholderImage: UIImage(named: "youtube"))
+    self.imageThumbnail.sd_setImage(with: URL(string: viewModel.thumbnails), placeholderImage: UIImage(named: "youtube") )
   }
-    
 }

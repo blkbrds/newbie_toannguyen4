@@ -31,27 +31,22 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     let homeViewController = HomeViewController()
     let homeNavigationController = UINavigationController(rootViewController: homeViewController)
     homeNavigationController.tabBarItem = UITabBarItem(title: "Home", image:  UIImage(named: "homeActive"), selectedImage: UIImage(named: "homeInActive"))
-    
     //config tab Map
     let mapViewController = MapViewController()
     let mapNavigationController = UINavigationController(rootViewController: mapViewController)
     mapNavigationController.tabBarItem = UITabBarItem(title: "Map", image:  UIImage(named: "mapActive"), selectedImage: UIImage(named: "mapInActive"))
-    
     //config tab Favorite
     let favoriteViewController = FavoriteViewController()
     let favoriteNavigationController = UINavigationController(rootViewController: favoriteViewController)
     favoriteNavigationController.tabBarItem = UITabBarItem(title: "Favorite", image:  UIImage(named: "favoriteActive"), selectedImage: UIImage(named: "favoriteInActive"))
-    
     //config tab Profile
     let profileViewController = ProfileViewController()
     let profileNavigationController = UINavigationController(rootViewController: profileViewController)
     profileNavigationController.tabBarItem = UITabBarItem(title: "Profile", image:  UIImage(named: "profileActive"), selectedImage: UIImage(named: "profileInActive"))
-    
     //add tabar item in tabarController
     let viewControllers = [homeNavigationController, mapNavigationController, favoriteNavigationController, profileNavigationController]
     let tabarController = UITabBarController()
     tabarController.viewControllers = viewControllers
-    
     //config windows
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.rootViewController = tabarController

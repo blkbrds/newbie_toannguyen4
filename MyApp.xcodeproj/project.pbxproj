@@ -32,7 +32,6 @@
 		E3EDF4F82318B3FD002D4616 /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3EDF4F62318B3FD002D4616 /* HeaderCell.xib */; };
 		E3EDF4FB2318C18C002D4616 /* HomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EDF4F92318C18C002D4616 /* HomeCollectionCell.swift */; };
 		E3EDF4FC2318C18C002D4616 /* HomeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3EDF4FA2318C18C002D4616 /* HomeCollectionCell.xib */; };
-		E3EDF4FE2318D08D002D4616 /* UIImageEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EDF4FD2318D08D002D4616 /* UIImageEx.swift */; };
 		E3EDF5012318DE8A002D4616 /* HeaderCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EDF4FF2318DE8A002D4616 /* HeaderCollectionCell.swift */; };
 		E3EDF5022318DE8A002D4616 /* HeaderCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3EDF5002318DE8A002D4616 /* HeaderCollectionCell.xib */; };
 		EC0105521E8F8AE000CE013D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC0105401E8F8ADF00CE013D /* Assets.xcassets */; };
@@ -116,7 +115,6 @@
 		E3EDF4F62318B3FD002D4616 /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
 		E3EDF4F92318C18C002D4616 /* HomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCell.swift; sourceTree = "<group>"; };
 		E3EDF4FA2318C18C002D4616 /* HomeCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionCell.xib; sourceTree = "<group>"; };
-		E3EDF4FD2318D08D002D4616 /* UIImageEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageEx.swift; sourceTree = "<group>"; };
 		E3EDF4FF2318DE8A002D4616 /* HeaderCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionCell.swift; sourceTree = "<group>"; };
 		E3EDF5002318DE8A002D4616 /* HeaderCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCollectionCell.xib; sourceTree = "<group>"; };
 		EC0105401E8F8ADF00CE013D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -454,7 +452,6 @@
 				E3EBBD32231628F80076D1FD /* Data.swift */,
 				E3EBBD34231629240076D1FD /* Dictionary.swift */,
 				E3E96D012316C401003688B4 /* ViewModel.swift */,
-				E3EDF4FD2318D08D002D4616 /* UIImageEx.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -728,7 +725,6 @@
 				E3AFA67E23167A7A009E7EBE /* Snippet.swift in Sources */,
 				EC332A481EA0A8CB0011DF1E /* Api.swift in Sources */,
 				ECD1C29B1EA725B1000EC989 /* InputViewExt.swift in Sources */,
-				E3EDF4FE2318D08D002D4616 /* UIImageEx.swift in Sources */,
 				ECF23AB41E9B869B008C23C1 /* ApiManager.swift in Sources */,
 				E3EBBD28231624FE0076D1FD /* MapViewController.swift in Sources */,
 				E3EBBD30231625180076D1FD /* ProfileViewController.swift in Sources */,

@@ -85,7 +85,7 @@ class SnippetListViewModel: MVVM.ViewModel {
           DispatchQueue.main.async {
             do {
               let realm = try Realm()
-              try realm.write{
+              try realm.write {
                 realm.deleteAll()
                 for item in items {
                   guard let snippet = item["snippet"] as? JSObject else {

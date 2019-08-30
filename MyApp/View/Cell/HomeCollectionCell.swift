@@ -22,7 +22,11 @@ class HomeCollectionCell: UICollectionViewCell, MVVM.View {
       updateView()
     }
   }
-  var image: UIImage? { didSet { updateUI() }}
+  var image: UIImage? {
+    didSet {
+      updateUI()
+    }
+  }
 
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -45,12 +49,8 @@ class HomeCollectionCell: UICollectionViewCell, MVVM.View {
     }
   }
 
-
-
   override func layoutSubviews() {
     super.layoutSubviews()
     updateUI()
   }
 }
-
-
