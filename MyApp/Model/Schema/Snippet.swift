@@ -40,7 +40,7 @@ final class Snippet: Object, Mappable {
     if let defaultUrl = json["thumbnails"] as? JSObject {
       if let thumb = defaultUrl["medium"] as? JSObject {
         if let thumbUrl = thumb["url"] {
-            schema["thumbnails"] = thumbUrl
+          schema["thumbnails"] = thumbUrl
         }
       }
     }
@@ -65,5 +65,4 @@ final class Snippet: Object, Mappable {
     channelTitle <- map["channelTitle"]
     liveBroadcastContent <- map["liveBroadcastContent"]
   }
-
 }

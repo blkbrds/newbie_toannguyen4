@@ -28,6 +28,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var heightSearchBar: NSLayoutConstraint!
   private var snippetList: Results<Snippet>?
+  private var refreshControl = UIRefreshControl()
   private var isDisplayTable = true
   private var keySearch = "IOS"
   private let kMarginLeft = CGFloat(10.0)
@@ -50,6 +51,19 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
     viewModel.fetch()
     setupTitleNavi()
     self.fetchSnippet()
+    // Refresh control add in tableview.
+    refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+    refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    tableView.addSubview(refreshControl)
+    //collectionView.addSubview(refreshControl)
+  }
+
+  @objc func refresh(_ sender: Any) {
+    DispatchQueue.main.async {
+      self.tableView.reloadData()
+      //self.collectionView.reloadData()
+      self.refreshControl.endRefreshing()
+    }
   }
 
   override func viewDidAppear(_ animated: Bool) {
