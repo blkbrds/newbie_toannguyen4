@@ -58,32 +58,17 @@ class SnippetListViewModel: MVVM.ViewModel {
   enum SnippetResult {
     case success
     case failure
-
-  }
-
-  private func removeAllDataRealm() {
-    DispatchQueue.main.async {
-      do {
-        let realm = try Realm()
-        realm.deleteAll()
-      } catch {
-        print("Error with Realm")
-      }
-    }
   }
 
   typealias GetSnippetCompletion = (SnippetResult) -> Void
 
-  func getSnippets(completion: @escaping GetSnippetCompletion) {
+  func getSnippets(keySearch: String, completion: @escaping GetSnippetCompletion) {
     let params = Api.Snippet.QueryParams(
       token: "CBkQAA",
-      keySearch: "PhanDinhTung",
       keyID: "AIzaSyDIJ9UssMoN9IfR9KnTc4lb3B9NtHpRF-c"
     )
 
-    //self.removeAllDataRealm()
-
-    Api.Snippet.query(params: params) { (result) in
+    Api.Snippet.query(keySearch: keySearch, params: params) { (result) in
       do {
         try Realm().refresh()
       } catch {

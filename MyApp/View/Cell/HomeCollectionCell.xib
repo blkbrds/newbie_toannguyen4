@@ -22,24 +22,24 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixM-eE-fRA">
                         <rect key="frame" x="0.0" y="0.0" width="217" height="214"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzD-0Q-Td5">
-                                <rect key="frame" x="5" y="198" width="172" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzD-0Q-Td5">
+                                <rect key="frame" x="5" y="174" width="172" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favoriteActive" translatesAutoresizingMaskIntoConstraints="NO" id="5aT-pt-1fp">
-                                <rect key="frame" x="187" y="203" width="25" height="25"/>
+                                <rect key="frame" x="187" y="179" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="9NV-y7-7Rv"/>
                                     <constraint firstAttribute="height" constant="25" id="NRx-ef-xIm"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BW1-6V-6GM">
-                                <rect key="frame" x="0.0" y="0.0" width="217" height="198"/>
+                                <rect key="frame" x="0.0" y="0.0" width="217" height="174"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="odw-Cx-gcj">
-                                        <rect key="frame" x="0.0" y="0.0" width="217" height="198"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="217" height="174"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -60,6 +60,7 @@
                             <constraint firstAttribute="trailing" secondItem="5aT-pt-1fp" secondAttribute="trailing" constant="5" id="gMb-VP-msq"/>
                             <constraint firstItem="BW1-6V-6GM" firstAttribute="top" secondItem="ixM-eE-fRA" secondAttribute="top" id="kAF-lA-LOG"/>
                             <constraint firstItem="BW1-6V-6GM" firstAttribute="leading" secondItem="ixM-eE-fRA" secondAttribute="leading" id="m9z-KP-oQf"/>
+                            <constraint firstAttribute="bottom" secondItem="5aT-pt-1fp" secondAttribute="bottom" constant="10" id="pHV-N2-8p5"/>
                             <constraint firstAttribute="bottom" secondItem="kzD-0Q-Td5" secondAttribute="bottom" id="wCy-Zj-g30"/>
                             <constraint firstItem="kzD-0Q-Td5" firstAttribute="top" secondItem="BW1-6V-6GM" secondAttribute="bottom" id="xK4-aB-foz"/>
                         </constraints>

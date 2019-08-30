@@ -13,6 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="MyApp" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="VJZ-Zs-HJI" id="o8Y-If-piU"/>
+                <outlet property="heightSearchBar" destination="SHM-oS-X83" id="ffA-nn-LMy"/>
+                <outlet property="searchBar" destination="Zg5-Ud-BjO" id="4BW-zM-Cun"/>
                 <outlet property="tableView" destination="DvG-zv-5eZ" id="qc1-ia-NnI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DvG-zv-5eZ">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="QBa-9s-51k"/>
@@ -31,7 +33,7 @@
                     </connections>
                 </tableView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VJZ-Zs-HJI">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GEK-9t-yJB">
                         <size key="itemSize" width="50" height="50"/>
@@ -44,17 +46,27 @@
                         <outlet property="delegate" destination="-1" id="aZZ-ba-cuR"/>
                     </connections>
                 </collectionView>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Zg5-Ud-BjO">
+                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="SHM-oS-X83"/>
+                    </constraints>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="VJZ-Zs-HJI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3E7-jx-cQo"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="DvG-zv-5eZ" secondAttribute="bottom" id="5VS-P4-pHV"/>
                 <constraint firstItem="DvG-zv-5eZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8Qd-tS-asE"/>
+                <constraint firstItem="Zg5-Ud-BjO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Fal-vu-sGE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="VJZ-Zs-HJI" secondAttribute="bottom" id="GSj-gE-Ks1"/>
-                <constraint firstItem="DvG-zv-5eZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="LPW-Le-6ef"/>
-                <constraint firstItem="VJZ-Zs-HJI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Lzg-35-k43"/>
+                <constraint firstItem="DvG-zv-5eZ" firstAttribute="top" secondItem="Zg5-Ud-BjO" secondAttribute="bottom" id="GbO-il-6ze"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DvG-zv-5eZ" secondAttribute="trailing" id="afF-AL-XY5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VJZ-Zs-HJI" secondAttribute="trailing" id="he8-xt-DOg"/>
+                <constraint firstItem="VJZ-Zs-HJI" firstAttribute="top" secondItem="Zg5-Ud-BjO" secondAttribute="bottom" id="pUM-5k-wPn"/>
+                <constraint firstItem="Zg5-Ud-BjO" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="uzD-nh-e0S"/>
+                <constraint firstItem="Zg5-Ud-BjO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="vXy-qc-I8V"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="133.92857142857142"/>

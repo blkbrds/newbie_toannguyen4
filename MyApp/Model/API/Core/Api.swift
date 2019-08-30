@@ -18,7 +18,7 @@ extension Api.Path {
     let token: String
     let keySearch: String
     let keyID: String
-    var urlString: String { return Snippet.path / "pageToken=\(token)&part=snippet&maxResults=25&order=relevance&q=\(keySearch)&key=\(keyID)" }
+    var urlString: String { return Snippet.path / "pageToken=\(token)&part=snippet&maxResults=50&order=relevance&q=\(keySearch)&key=\(keyID)" }
   }
 }
 
