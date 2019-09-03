@@ -25,24 +25,66 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     configTabarController()
     return true
   }
+
+}
+
+extension AppDelegate {
+  fileprivate func configNetwork() {
+    networkIndicator.isEnabled = true
+    networkIndicator.startDelay = 0
+  }
+
+  enum TitleTabarItem: String {
+    case home
+    case map
+    case favorite
+    case profile
+  }
+
+  enum ImageSelectedForTabar: String {
+    case homeActive
+    case mapActive
+    case favoriteActive
+    case profileActive
+  }
+
+  enum ImageDeSelectForTabar: String {
+    case homeInActive
+    case mapInActive
+    case favoriteInActive
+    case profileInActive
+  }
+
   private func configTabarController() {
     //create tabar controller
     //config tab Home
     let homeViewController = HomeViewController()
     let homeNavigationController = UINavigationController(rootViewController: homeViewController)
-    homeNavigationController.tabBarItem = UITabBarItem(title: "Home", image:  UIImage(named: "homeActive"), selectedImage: UIImage(named: "homeInActive"))
+    homeNavigationController.tabBarItem = UITabBarItem(
+                                              title: TitleTabarItem.home.rawValue.capitalized,
+                                              image: UIImage(named: ImageSelectedForTabar.homeActive.rawValue),
+                                              selectedImage: UIImage(named: ImageDeSelectForTabar.homeInActive.rawValue))
     //config tab Map
     let mapViewController = MapViewController()
     let mapNavigationController = UINavigationController(rootViewController: mapViewController)
-    mapNavigationController.tabBarItem = UITabBarItem(title: "Map", image:  UIImage(named: "mapActive"), selectedImage: UIImage(named: "mapInActive"))
+    mapNavigationController.tabBarItem = UITabBarItem(
+                                              title: TitleTabarItem.map.rawValue.capitalized,
+                                              image: UIImage(named: ImageSelectedForTabar.mapActive.rawValue),
+                                              selectedImage: UIImage(named: ImageDeSelectForTabar.mapInActive.rawValue))
     //config tab Favorite
     let favoriteViewController = FavoriteViewController()
     let favoriteNavigationController = UINavigationController(rootViewController: favoriteViewController)
-    favoriteNavigationController.tabBarItem = UITabBarItem(title: "Favorite", image:  UIImage(named: "favoriteActive"), selectedImage: UIImage(named: "favoriteInActive"))
+    favoriteNavigationController.tabBarItem = UITabBarItem(
+                                              title: TitleTabarItem.favorite.rawValue.capitalized,
+                                              image: UIImage(named: ImageSelectedForTabar.favoriteActive.rawValue),
+                                              selectedImage: UIImage(named: ImageDeSelectForTabar.favoriteInActive.rawValue))
     //config tab Profile
     let profileViewController = ProfileViewController()
     let profileNavigationController = UINavigationController(rootViewController: profileViewController)
-    profileNavigationController.tabBarItem = UITabBarItem(title: "Profile", image:  UIImage(named: "profileActive"), selectedImage: UIImage(named: "profileInActive"))
+    profileNavigationController.tabBarItem = UITabBarItem(
+                                              title: TitleTabarItem.profile.rawValue.capitalized,
+                                              image: UIImage(named: ImageSelectedForTabar.profileActive.rawValue),
+                                              selectedImage: UIImage(named: ImageDeSelectForTabar.profileInActive.rawValue))
     //add tabar item in tabarController
     let viewControllers = [homeNavigationController, mapNavigationController, favoriteNavigationController, profileNavigationController]
     let tabarController = UITabBarController()
@@ -52,12 +94,5 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     window?.rootViewController = tabarController
     window?.backgroundColor = .white
     window?.makeKeyAndVisible()
-  }
-}
-
-extension AppDelegate {
-  fileprivate func configNetwork() {
-    networkIndicator.isEnabled = true
-    networkIndicator.startDelay = 0
   }
 }
