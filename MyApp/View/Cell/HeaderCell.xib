@@ -52,9 +52,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="mainView" destination="utS-FD-4pK" id="iY9-tS-ZWM"/>
                 <outlet property="pageControl" destination="IcD-8Q-4Xa" id="zGU-lJ-Da4"/>
-                <outlet property="scrollView" destination="Gcv-8t-R3u" id="cOi-Va-zy3"/>
-                <outlet property="viewScroll" destination="utS-FD-4pK" id="MIV-IQ-EMF"/>
+                <outlet property="sliderScrollView" destination="Gcv-8t-R3u" id="9La-0W-Pcd"/>
             </connections>
             <point key="canvasLocation" x="217.39130434782609" y="132.25446428571428"/>
         </tableViewCell>
