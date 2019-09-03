@@ -47,8 +47,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupTableView()
-    setupCollectionView()
+    registerNib()
     changeTypeDisplay()
     viewModel.delegate = self
     viewModel.fetch()
@@ -95,22 +94,29 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
     self.navigationItem.title = "Home"
   }
 
-  private func setupTableView() {
-    tableView.register(UINib(nibName: "YoutubeCell", bundle: nil), forCellReuseIdentifier: "YoutubeCell")
-    tableView.register(UINib(nibName: "HeaderCell", bundle: nil), forCellReuseIdentifier: "HeaderCell")
+  enum IdentifierNib {
+    static let youtubeCell: String = "YoutubeCell"
+    static let headerCell: String = "HeaderCell"
+    static let homeCollectionCell: String = "HomeCollectionCell"
+    static let headerCollectionCell: String = "HeaderCollectionCell"
+  }
+
+  private func registerNib() {
+    //register tableview
+    tableView.register(UINib(nibName: IdentifierNib.youtubeCell, bundle: nil), forCellReuseIdentifier: IdentifierNib.youtubeCell)
+    tableView.register(UINib(nibName: IdentifierNib.headerCell, bundle: nil), forCellReuseIdentifier: IdentifierNib.headerCell)
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 120
     tableView.dataSource = self
     tableView.delegate = self
     tableView.reloadData()
     searchBar.delegate = self
-  }
 
-  func setupCollectionView() {
-    let cellNib = UINib(nibName: "HomeCollectionCell", bundle: Bundle.main)
-    collectionView.register(cellNib, forCellWithReuseIdentifier: "HomeCollectionCell")
-    let cellNibHeader = UINib(nibName: "HeaderCollectionCell", bundle: Bundle.main)
-    collectionView.register(cellNibHeader, forCellWithReuseIdentifier: "HeaderCollectionCell")
+    //register collectionView
+    let cellNib = UINib(nibName: IdentifierNib.homeCollectionCell, bundle: Bundle.main)
+    collectionView.register(cellNib, forCellWithReuseIdentifier: IdentifierNib.homeCollectionCell)
+    let cellNibHeader = UINib(nibName: IdentifierNib.headerCollectionCell, bundle: Bundle.main)
+    collectionView.register(cellNibHeader, forCellWithReuseIdentifier: IdentifierNib.headerCollectionCell)
     collectionView.reloadData()
   }
 
@@ -138,7 +144,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
       self.heightSearchBar.constant = 0
     }
   }
-  
+
   @objc func changeTypeDisplay() {
     setupRightNavigationItem()
 
@@ -171,12 +177,7 @@ extension HomeViewController: UISearchBarDelegate {
       this.viewDidUpdated()
     }
     viewModel.fetch()
-
-    if !isDisplayTable {
-      tableView.reloadData()
-    } else {
-      collectionView.reloadData()
-    }
+    updateView()
   }
 
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -207,11 +208,7 @@ extension HomeViewController: UISearchBarDelegate {
       }
       this.viewDidUpdated()
     }
-    if !isDisplayTable {
-      tableView.reloadData()
-    } else {
-      collectionView.reloadData()
-    }
+    updateView()
   }
 }
 
@@ -236,14 +233,13 @@ extension HomeViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if indexPath.section == SectionTableView.kHeaderSection.rawValue {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as? HeaderCell
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: IdentifierNib.headerCell) as? HeaderCell
         else { fatalError() }
       return cell
     }
 
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "YoutubeCell") as? YoutubeCell
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: IdentifierNib.youtubeCell) as? YoutubeCell
       else { fatalError() }
-    
     cell.viewModel = viewModel.viewModelForItem(at: indexPath)
     return cell
   }
@@ -286,14 +282,14 @@ extension HomeViewController: UICollectionViewDataSource {
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     if indexPath.section == SectionTableView.kHeaderSection.rawValue {
-      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HeaderCollectionCell", for: indexPath) as? HeaderCollectionCell else {
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IdentifierNib.headerCollectionCell, for: indexPath) as? HeaderCollectionCell else {
         return UICollectionViewCell()
       }
 
       return cell
     }
 
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionCell", for: indexPath) as? HomeCollectionCell else {
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IdentifierNib.homeCollectionCell, for: indexPath) as? HomeCollectionCell else {
       return UICollectionViewCell()
     }
     cell.viewModel = viewModel.viewModelForItem(at: indexPath)
