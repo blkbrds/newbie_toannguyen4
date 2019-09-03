@@ -17,6 +17,11 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
     case kYoutubeSection
   }
 
+  enum IconRightNavigation: String {
+    case table
+    case collection
+  }
+
   var viewModel = SnippetListViewModel() {
     didSet {
       updateView()
@@ -27,7 +32,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var heightSearchBar: NSLayoutConstraint!
-  //private var snippetList: Results<Snippet>?
   private var refreshControl = UIRefreshControl()
   private var isDisplayTable = true
   private var keySearch = "IOS"
@@ -110,9 +114,16 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
     collectionView.reloadData()
   }
 
-  func setupRemainingNavItems(icon: String) {
+  func setupRightNavigationItem() {
     let rightIcon = UIButton(type: .custom)
-    rightIcon.setImage(UIImage (named: icon), for: .normal)
+
+    switch isDisplayTable {
+    case true:
+      rightIcon.setImage(UIImage (named: IconRightNavigation.collection.rawValue), for: .normal)
+    default:
+      rightIcon.setImage(UIImage (named: IconRightNavigation.table.rawValue), for: .normal)
+    }
+
     rightIcon.frame = CGRect(x: 0.0, y: 0.0, width: 30.0, height: 30.0)
     rightIcon.addTarget(self, action: #selector(changeTypeDisplay), for: .touchUpInside)
     let barButtonItem = UIBarButtonItem(customView: rightIcon)
@@ -127,14 +138,15 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
       self.heightSearchBar.constant = 0
     }
   }
+  
   @objc func changeTypeDisplay() {
+    setupRightNavigationItem()
+
     if isDisplayTable {
-      setupRemainingNavItems(icon: "collection")
       isDisplayTable = false
       tableView.isHidden = false
       collectionView.isHidden = true
     } else {
-      setupRemainingNavItems(icon: "table")
       isDisplayTable = true
       tableView.isHidden = true
       collectionView.isHidden = false
@@ -231,6 +243,7 @@ extension HomeViewController: UITableViewDataSource {
 
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "YoutubeCell") as? YoutubeCell
       else { fatalError() }
+    
     cell.viewModel = viewModel.viewModelForItem(at: indexPath)
     return cell
   }
