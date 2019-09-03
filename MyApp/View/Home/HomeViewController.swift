@@ -27,7 +27,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var heightSearchBar: NSLayoutConstraint!
-  private var snippetList: Results<Snippet>?
+  //private var snippetList: Results<Snippet>?
   private var refreshControl = UIRefreshControl()
   private var isDisplayTable = true
   private var keySearch = "IOS"
@@ -49,7 +49,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
     viewModel.delegate = self
     viewModel.fetch()
     setupTitleNavi()
-    self.fetchSnippet()
     // Refresh control add in tableview.
     refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
     refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -139,28 +138,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
       isDisplayTable = true
       tableView.isHidden = true
       collectionView.isHidden = false
-    }
-  }
-
-  func fetchSnippet() {
-    do {
-      let realm = try Realm()
-      snippetList = realm.objects(Snippet.self)
-    } catch {
-      snippetList = nil
-    }
-  }
-
-  func delete(index: Int) {
-    guard let snip = snippetList?[index] else { return }
-    do {
-      let realm = try Realm()
-      try realm.write {
-        realm.delete(snip)
-        self.tableView.reloadData()
-      }
-    } catch {
-      print("can't delete")
     }
   }
 }
@@ -274,8 +251,8 @@ extension HomeViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     // 1
     let shareAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
-      self.delete(index: indexPath.row)
-      self.fetchSnippet()
+      self.viewModel.delete(index: indexPath.row)
+      self.viewModel.fetch()
       tableView.reloadData()
     })
     return [shareAction]

@@ -60,6 +60,18 @@ class SnippetListViewModel: MVVM.ViewModel {
     case failure
   }
 
+  func delete(index: Int) {
+    guard let snip = snippets?[index] else { return }
+    do {
+      let realm = try Realm()
+      try realm.write {
+        realm.delete(snip)
+      }
+    } catch {
+      print("can't delete")
+    }
+  }
+
   typealias GetSnippetCompletion = (SnippetResult) -> Void
 
   func getSnippets(keySearch: String, completion: @escaping GetSnippetCompletion) {
