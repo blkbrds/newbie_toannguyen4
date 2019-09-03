@@ -9,56 +9,61 @@
 import UIKit
 
 class HeaderCollectionCell: UICollectionViewCell, UIScrollViewDelegate {
-  @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var pageControl: UIPageControl!
-  @IBOutlet weak var viewScroll: UIView!
+  @IBOutlet weak var mainView: UIView!
+  @IBOutlet weak var sliderScrollView: UIScrollView!
   override func awakeFromNib() {
     super.awakeFromNib()
     setupScroll()
   }
 
+  enum ImageSlider: String {
+    case slide1
+    case slide2
+    case slide3
+    case slide4
+  }
+
   func setupScroll() {
-    self.scrollView.frame = CGRect(x: 0, y: 0, width: self.viewScroll.frame.width, height: self.viewScroll.frame.height)
-    let scrollViewWidth: CGFloat = self.viewScroll.frame.width
-    let scrollViewHeight: CGFloat = 210//self.viewScroll.frame.height
-    print(self.scrollView.frame.height)
-    print(self.viewScroll.frame.height)
+    self.sliderScrollView.frame = CGRect(x: 0, y: 0, width: self.mainView.frame.width, height: self.mainView.frame.height)
+    let scrollViewWidth: CGFloat = self.mainView.frame.width
+    let scrollViewHeight: CGFloat = 210
 
     let imgOne = UIImageView(frame: CGRect(x: 0, y: 0, width: scrollViewWidth, height: scrollViewHeight))
-    imgOne.image = UIImage(named: "slide1")
+    imgOne.image = UIImage(named: ImageSlider.slide1.rawValue)
     let imgTwo = UIImageView(frame: CGRect(x: scrollViewWidth, y: 0, width: scrollViewWidth, height: scrollViewHeight))
-    imgTwo.image = UIImage(named: "slide2")
+    imgTwo.image = UIImage(named: ImageSlider.slide2.rawValue)
     let imgThree = UIImageView(frame: CGRect(x: scrollViewWidth * 2, y: 0, width: scrollViewWidth, height: scrollViewHeight))
-    imgThree.image = UIImage(named: "slide3")
+    imgThree.image = UIImage(named: ImageSlider.slide3.rawValue)
     let imgFour = UIImageView(frame: CGRect(x: scrollViewWidth * 3, y: 0, width: scrollViewWidth, height: scrollViewHeight))
-    imgFour.image = UIImage(named: "slide4")
-    self.scrollView.addSubview(imgOne)
-    self.scrollView.addSubview(imgTwo)
-    self.scrollView.addSubview(imgThree)
-    self.scrollView.addSubview(imgFour)
+    imgFour.image = UIImage(named: ImageSlider.slide4.rawValue)
+    self.sliderScrollView.addSubview(imgOne)
+    self.sliderScrollView.addSubview(imgTwo)
+    self.sliderScrollView.addSubview(imgThree)
+    self.sliderScrollView.addSubview(imgFour)
     //4
-    self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * 4, height: self.scrollView.frame.height)
-    self.scrollView.delegate = self
+    self.sliderScrollView.contentSize = CGSize(width: self.sliderScrollView.frame.width * 4, height: self.sliderScrollView.frame.height)
+    self.sliderScrollView.delegate = self
     self.pageControl.currentPage = 0
-    self.viewScroll.bringSubview(toFront: pageControl)
+    self.mainView.bringSubview(toFront: pageControl)
 
     Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
   }
 
   @objc func moveToNextPage () {
-    let pageWidth: CGFloat = self.scrollView.frame.width
+    let pageWidth: CGFloat = self.sliderScrollView.frame.width
     let maxWidth: CGFloat = pageWidth * 4
-    let contentOffset: CGFloat = self.scrollView.contentOffset.x
+    let contentOffset: CGFloat = self.sliderScrollView.contentOffset.x
     var slideToX = contentOffset + pageWidth
     if  contentOffset + pageWidth == maxWidth {
       slideToX = 0
     }
-    self.scrollView.scrollRectToVisible(CGRect(x: slideToX, y: 0, width: pageWidth, height: self.scrollView.frame.height), animated: true)
+    self.sliderScrollView.scrollRectToVisible(CGRect(x: slideToX, y: 0, width: pageWidth, height: self.sliderScrollView.frame.height), animated: true)
   }
 }
 
-private typealias ScrollView = HeaderCollectionCell
-extension ScrollView {
+private typealias SliderScroll = HeaderCollectionCell
+extension SliderScroll {
   func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
     // Test the offset and calculate the current page after scrolling ends
     let pageWidth: CGFloat = scrollView.frame.width

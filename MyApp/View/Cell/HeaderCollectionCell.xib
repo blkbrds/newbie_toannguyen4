@@ -53,9 +53,9 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="413" height="159"/>
             <connections>
+                <outlet property="mainView" destination="7zx-9M-Lmg" id="ZE2-h1-IYg"/>
                 <outlet property="pageControl" destination="C8s-TV-Dmv" id="hbG-a6-f5G"/>
-                <outlet property="scrollView" destination="ROl-jW-zcz" id="ehn-DX-mCj"/>
-                <outlet property="viewScroll" destination="7zx-9M-Lmg" id="uVr-2S-oZ5"/>
+                <outlet property="sliderScrollView" destination="ROl-jW-zcz" id="nzO-Bl-lvW"/>
             </connections>
             <point key="canvasLocation" x="181.8840579710145" y="55.245535714285715"/>
         </collectionViewCell>
