@@ -17,7 +17,7 @@ class HomeCollectionCell: UICollectionViewCell, MVVM.View {
   @IBOutlet weak var viewContain: UIView!
   @IBOutlet weak var imageThumbnail: UIImageView!
   @IBOutlet weak var lableTitle: UILabel!
-  var viewModel = SnippetCellViewModel(snippet: nil) {
+  var viewModel: SnippetCellViewModel? {
     didSet {
       updateView()
     }
@@ -38,6 +38,9 @@ class HomeCollectionCell: UICollectionViewCell, MVVM.View {
   }
 
   func updateView() {
+    guard let viewModel = viewModel else {
+      return
+    }
     self.lableTitle.text = viewModel.title
     self.imageThumbnail.sd_setImage(with: URL(string: viewModel.thumbnails), placeholderImage: UIImage(named: ImagePlaceHolder.youtube.rawValue))
   }

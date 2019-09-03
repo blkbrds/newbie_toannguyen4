@@ -16,7 +16,7 @@ class YoutubeCell: UITableViewCell, MVVM.View {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var chanelLabel: UILabel!
   @IBOutlet weak var favoriteImage: UIImageView!
-  var viewModel = SnippetCellViewModel(snippet: nil) {
+  var viewModel: SnippetCellViewModel? {
     didSet {
       updateView()
     }
@@ -32,6 +32,9 @@ class YoutubeCell: UITableViewCell, MVVM.View {
   }
 
   func updateView() {
+    guard let viewModel = viewModel else {
+      return
+    }
     self.titleLabel.text = viewModel.title
     self.chanelLabel.text = viewModel.channelTitle
     self.thumbnailImage.sd_setImage(with: URL(string: viewModel.thumbnails), placeholderImage: UIImage(named: ImagePlaceHolder.youtube.rawValue))
