@@ -49,13 +49,26 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
     super.viewDidLoad()
     registerNib()
     changeTypeDisplay()
-    viewModel.delegate = self
+    fetchDataFromAPI()
     viewModel.fetch()
     setupTitleNavi()
     // Refresh control add in tableview.
     refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
     refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     tableView.addSubview(refreshControl)
+  }
+
+  func fetchDataFromAPI() {
+    viewModel.getSnippets(keySearch: self.keySearch) { [weak self] (result) in
+      guard let this = self else { return }
+      switch result {
+      case .success:
+        self?.updateView()
+      case .failure:
+        this.alert(error: "Can't load data!")
+      }
+      this.viewDidUpdated()
+    }
   }
 
   @objc func refresh(_ sender: Any) {
@@ -174,21 +187,7 @@ extension HomeViewController: UISearchBarDelegate {
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
     searchBar.setShowsCancelButton(false, animated: true)
-
-    viewModel.getSnippets(keySearch: self.keySearch) { [weak self] (result) in
-      guard let this = self else { return }
-      switch result {
-      case .success:
-        if !self!.isDisplayTable {
-          self!.tableView.reloadData()
-        } else {
-          self!.collectionView.reloadData()
-        }
-      case .failure:
-        this.alert(error: "Can't load data!")
-      }
-      this.viewDidUpdated()
-    }
+    fetchDataFromAPI()
     updateView()
   }
 }
@@ -241,9 +240,16 @@ extension HomeViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     // 1
     let shareAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
-      self.viewModel.delete(index: indexPath.row)
-      self.viewModel.fetch()
-      tableView.reloadData()
+      self.viewModel.delete(index: indexPath.row, completion: { (result) in
+        switch result {
+        case .success:
+          self.viewModel.fetch()
+          tableView.reloadData()
+          print("Delete completed!")
+        case .failure:
+          print("Delete faild")
+        }
+      })
     })
     return [shareAction]
   }

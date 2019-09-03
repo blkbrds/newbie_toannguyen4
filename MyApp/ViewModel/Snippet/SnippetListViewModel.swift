@@ -13,7 +13,6 @@ import MVVM
 import SwiftyJSON
 
 class SnippetListViewModel: MVVM.ViewModel {
-  weak var delegate: ViewModelDelegate?
 
   private var snippets: Results<Snippet>?
   private var token: NotificationToken?
@@ -60,19 +59,21 @@ class SnippetListViewModel: MVVM.ViewModel {
     case failure
   }
 
-  func delete(index: Int) {
+  typealias GetSnippetCompletion = (SnippetResult) -> Void
+
+  func delete(index: Int, completion: @escaping GetSnippetCompletion) {
     guard let snip = snippets?[index] else { return }
     do {
       let realm = try Realm()
       try realm.write {
         realm.delete(snip)
+        completion(.success)
       }
     } catch {
+      completion(.failure)
       print("can't delete")
     }
   }
-
-  typealias GetSnippetCompletion = (SnippetResult) -> Void
 
   func getSnippets(keySearch: String, completion: @escaping GetSnippetCompletion) {
     let params = Api.Snippet.QueryParams(
