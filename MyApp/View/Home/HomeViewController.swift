@@ -152,11 +152,11 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
   }
 
   func delete(index: Int) {
-    guard let myFood = snippetList?[index] else { return }
+    guard let snip = snippetList?[index] else { return }
     do {
       let realm = try Realm()
       try realm.write {
-        realm.delete(myFood)
+        realm.delete(snip)
         self.tableView.reloadData()
       }
     } catch {
@@ -167,8 +167,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
 
 extension HomeViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
-
     viewModel.getSnippets(keySearch: searchText) { [weak self] (result) in
       guard let this = self else { return }
       switch result {
