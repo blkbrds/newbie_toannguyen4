@@ -73,10 +73,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="imageFavorite" destination="fAs-Wc-7fd" id="Zvf-xf-sPp"/>
-                <outlet property="imageThumbnail" destination="kgp-d5-z0x" id="b5j-eV-OkU"/>
-                <outlet property="labelChanel" destination="7Gu-w0-hWg" id="5t1-xS-3qd"/>
-                <outlet property="labelTitle" destination="gdg-XA-vz2" id="dtX-Vb-tRr"/>
+                <outlet property="chanelLabel" destination="7Gu-w0-hWg" id="AvJ-2f-OAW"/>
+                <outlet property="favoriteImage" destination="fAs-Wc-7fd" id="OgC-YO-fj2"/>
+                <outlet property="thumbnailImage" destination="kgp-d5-z0x" id="r3A-Ou-plu"/>
+                <outlet property="titleLabel" destination="gdg-XA-vz2" id="Al1-Jg-D2y"/>
             </connections>
             <point key="canvasLocation" x="145.6521739130435" y="117.85714285714285"/>
         </tableViewCell>
