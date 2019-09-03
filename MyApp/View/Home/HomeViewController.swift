@@ -65,21 +65,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
     }
   }
 
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-
-    viewModel.getSnippets(keySearch: self.keySearch) { [weak self] (result) in
-      guard let this = self else { return }
-      switch result {
-      case .success:
-        self!.tableView.reloadData()
-      case .failure:
-        this.alert(error: "Can't load data!")
-      }
-      this.viewDidUpdated()
-    }
-  }
-
   func updateView() {
     guard isViewLoaded else { return }
     if !isDisplayTable {
@@ -166,11 +151,7 @@ extension HomeViewController: UISearchBarDelegate {
       guard let this = self else { return }
       switch result {
       case .success:
-        if !self!.isDisplayTable {
-          self!.tableView.reloadData()
-        } else {
-          self!.collectionView.reloadData()
-        }
+        self?.updateView()
       case .failure:
         this.alert(error: "Can't load data!")
       }
