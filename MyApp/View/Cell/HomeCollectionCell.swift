@@ -24,7 +24,7 @@ class HomeCollectionCell: UICollectionViewCell, MVVM.View {
   }
   var image: UIImage? {
     didSet {
-      updateUI()
+      updateContentModeImageView()
     }
   }
 
@@ -33,12 +33,16 @@ class HomeCollectionCell: UICollectionViewCell, MVVM.View {
     updateView()
   }
 
-  func updateView() {
-    self.lableTitle.text = viewModel.title
-    self.imageThumbnail.sd_setImage(with: URL(string: viewModel.thumbnails), placeholderImage: UIImage(named: "youtube"))
+  enum ImagePlaceHolder: String {
+    case youtube
   }
 
-  private func updateUI() {
+  func updateView() {
+    self.lableTitle.text = viewModel.title
+    self.imageThumbnail.sd_setImage(with: URL(string: viewModel.thumbnails), placeholderImage: UIImage(named: ImagePlaceHolder.youtube.rawValue))
+  }
+
+  private func updateContentModeImageView() {
     guard let image = imageThumbnail.image else { return }
     let viewAspectRatio = self.bounds.width / self.bounds.height
     let imageAspectRatio = image.size.width / image.size.height
@@ -51,6 +55,6 @@ class HomeCollectionCell: UICollectionViewCell, MVVM.View {
 
   override func layoutSubviews() {
     super.layoutSubviews()
-    updateUI()
+    updateContentModeImageView()
   }
 }
