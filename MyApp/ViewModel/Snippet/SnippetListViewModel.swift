@@ -76,12 +76,6 @@ class SnippetListViewModel: MVVM.ViewModel {
     )
 
     Api.Snippet.query(keySearch: keySearch, params: params) { (result) in
-      do {
-        try Realm().refresh()
-      } catch {
-        print("can not refresh")
-      }
-
       switch result {
       case .success(let data):
         if let dict = data as? JSObject {
