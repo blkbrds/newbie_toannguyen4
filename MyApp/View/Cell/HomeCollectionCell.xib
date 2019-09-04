@@ -76,9 +76,10 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="217" height="214"/>
             <connections>
-                <outlet property="imageThumbnail" destination="odw-Cx-gcj" id="jSS-Do-2dv"/>
-                <outlet property="lableTitle" destination="kzD-0Q-Td5" id="gST-bA-Alt"/>
-                <outlet property="viewContain" destination="BW1-6V-6GM" id="hYy-BN-KGc"/>
+                <outlet property="containView" destination="BW1-6V-6GM" id="FqU-82-V8t"/>
+                <outlet property="favoriteImage" destination="5aT-pt-1fp" id="WRN-xp-Af8"/>
+                <outlet property="thumbnailImage" destination="odw-Cx-gcj" id="y7n-ZR-lzv"/>
+                <outlet property="titleLabel" destination="kzD-0Q-Td5" id="91g-3w-LwH"/>
             </connections>
             <point key="canvasLocation" x="258.69565217391306" y="85.714285714285708"/>
         </collectionViewCell>

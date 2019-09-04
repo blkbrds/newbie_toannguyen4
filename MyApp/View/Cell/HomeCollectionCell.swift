@@ -14,9 +14,10 @@ import CoreImage
 
 class HomeCollectionCell: UICollectionViewCell, MVVM.View {
 
-  @IBOutlet weak var viewContain: UIView!
-  @IBOutlet weak var imageThumbnail: UIImageView!
-  @IBOutlet weak var lableTitle: UILabel!
+  @IBOutlet weak var thumbnailImage: UIImageView!
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var favoriteImage: UIImageView!
+  @IBOutlet weak var containView: UIView!
   var viewModel: SnippetCellViewModel? {
     didSet {
       updateView()
@@ -41,12 +42,12 @@ class HomeCollectionCell: UICollectionViewCell, MVVM.View {
     guard let viewModel = viewModel else {
       return
     }
-    self.lableTitle.text = viewModel.title
-    self.imageThumbnail.sd_setImage(with: URL(string: viewModel.thumbnails), placeholderImage: UIImage(named: ImagePlaceHolder.youtube.rawValue))
+    self.titleLabel.text = viewModel.title
+    self.thumbnailImage.sd_setImage(with: URL(string: viewModel.thumbnails), placeholderImage: UIImage(named: ImagePlaceHolder.youtube.rawValue))
   }
 
   private func updateContentModeImageView() {
-    guard let image = imageThumbnail.image else { return }
+    guard let image = thumbnailImage.image else { return }
     let viewAspectRatio = self.bounds.width / self.bounds.height
     let imageAspectRatio = image.size.width / image.size.height
     if viewAspectRatio > imageAspectRatio {
