@@ -33,10 +33,9 @@ class SnippetListViewModel: MVVM.ViewModel {
 
   func viewModelForItem(at indexPath: IndexPath) -> SnippetCellViewModel {
 
-    guard let snippets = snippets else {
+    guard let snippet = snippets?[indexPath.row] else {
       fatalError("Please call `fetch()` first.")
     }
-    let snippet = snippets[indexPath.row]
     return SnippetCellViewModel(snippet: snippet)
   }
 
