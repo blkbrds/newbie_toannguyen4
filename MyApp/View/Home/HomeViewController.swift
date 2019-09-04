@@ -35,16 +35,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
   private var refreshControl = UIRefreshControl()
   private var isDisplayTable = true
   private var keySearch = "IOS"
-  private let kMarginLeft = CGFloat(10.0)
-  private let kMarginRight = CGFloat(5.0)
-  private let kCellWidth = CGFloat(UIScreen.main.bounds.width / 2)
-  private var kCellheight = CGFloat(0)
-  private let kWidthPerItem = CGFloat(10.0)
-  private let sectionInsets = UIEdgeInsets(top: 0.0,
-                                           left: 10.0,
-                                           bottom: 0,
-                                           right: 10.0)
-  
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -105,7 +95,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
     tableView.register(UINib(nibName: IdentifierNib.youtubeCell, bundle: nil), forCellReuseIdentifier: IdentifierNib.youtubeCell)
     tableView.register(UINib(nibName: IdentifierNib.headerCell, bundle: nil), forCellReuseIdentifier: IdentifierNib.headerCell)
     tableView.rowHeight = UITableViewAutomaticDimension
-    tableView.estimatedRowHeight = 120
+    tableView.estimatedRowHeight = App.SizeHomeTableViewCell.kHeightCellSection
     tableView.dataSource = self
     tableView.delegate = self
     tableView.reloadData()
@@ -129,7 +119,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
       rightIcon.setImage(UIImage (named: IconRightNavigation.table.rawValue), for: .normal)
     }
 
-    rightIcon.frame = CGRect(x: 0.0, y: 0.0, width: 30.0, height: 30.0)
+    rightIcon.frame = CGRect(x: 0.0, y: 0.0, width: App.SizeRightIconNavi.kWidth, height: App.SizeRightIconNavi.kHeigh)
     rightIcon.addTarget(self, action: #selector(changeTypeDisplay), for: .touchUpInside)
     let barButtonItem = UIBarButtonItem(customView: rightIcon)
 
@@ -138,9 +128,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
 
   public func scrollViewDidScroll(_ scrollView: UIScrollView) {
     if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 0 {
-      self.heightSearchBar.constant = 44
+      self.heightSearchBar.constant = App.SizeSearchBar.kHeightShowSearchBar
     } else {
-      self.heightSearchBar.constant = 0
+      self.heightSearchBar.constant = App.SizeSearchBar.kHeightHiddenSearchBar
     }
   }
 
@@ -230,13 +220,11 @@ extension HomeViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       print(viewModel.viewModelForItem(at: indexPath).title)
   }
-  
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.section == SectionTableView.kHeaderSection.rawValue {
-      return 210
+      return App.SizeHomeTableViewCell.kHeightHeaderSection
     }
-
-    return 130
+    return App.SizeHomeTableViewCell.kHeightCellSection
   }
 
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -289,18 +277,15 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     if indexPath.section == SectionTableView.kHeaderSection.rawValue {
-      return CGSize(width: kCellWidth * 2, height: 210)
+      return CGSize(width: App.SizeHomeCollectionViewCell.kWidthHeaderSection, height: App.SizeHomeCollectionViewCell.kHeightHeaderSection)
     }
-    return CGSize(width: (kCellWidth - kMarginLeft - kMarginRight), height: kCellWidth - 30)
+    return CGSize(width: App.SizeHomeCollectionViewCell.kCellWidth, height: App.SizeHomeCollectionViewCell.kCellheight)
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     if section == SectionTableView.kHeaderSection.rawValue {
-      return UIEdgeInsets(top: 5.0,
-                          left: 0.0,
-                          bottom: 0,
-                          right: 0.0)
+      return App.SizeHomeCollectionViewCell.kHeaderInsets
     }
-    return sectionInsets.self
+    return App.SizeHomeCollectionViewCell.kCellInsets
   }
 }

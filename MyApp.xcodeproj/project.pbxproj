@@ -16,6 +16,7 @@
 		E3E96D022316C401003688B4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E96D012316C401003688B4 /* ViewModel.swift */; };
 		E3E96D072316D033003688B4 /* YoutubeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E96D052316D033003688B4 /* YoutubeCell.swift */; };
 		E3E96D082316D033003688B4 /* YoutubeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3E96D062316D033003688B4 /* YoutubeCell.xib */; };
+		E3EA2639231F5F620087914C /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA2638231F5F620087914C /* Size.swift */; };
 		E3EBBD24231624F10076D1FD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EBBD22231624F10076D1FD /* HomeViewController.swift */; };
 		E3EBBD25231624F10076D1FD /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3EBBD23231624F10076D1FD /* HomeViewController.xib */; };
 		E3EBBD28231624FE0076D1FD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EBBD26231624FE0076D1FD /* MapViewController.swift */; };
@@ -96,6 +97,7 @@
 		E3E96D012316C401003688B4 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		E3E96D052316D033003688B4 /* YoutubeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeCell.swift; sourceTree = "<group>"; };
 		E3E96D062316D033003688B4 /* YoutubeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YoutubeCell.xib; sourceTree = "<group>"; };
+		E3EA2638231F5F620087914C /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		E3EBBD22231624F10076D1FD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E3EBBD23231624F10076D1FD /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		E3EBBD26231624FE0076D1FD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				ECEC0C571ED44C5D00F6760A /* String.swift */,
 				EC5337B41EF7845700ACE038 /* Color.swift */,
 				EC5337BD1EF78FEA00ACE038 /* Font.swift */,
+				E3EA2638231F5F620087914C /* Size.swift */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 				ECF23AC31E9B9264008C23C1 /* StringExt.swift in Sources */,
 				E3AFA68023167C99009E7EBE /* API.Snippet.swift in Sources */,
 				ECEC0C5E1ED44D7700F6760A /* MapperExt.swift in Sources */,
+				E3EA2639231F5F620087914C /* Size.swift in Sources */,
 				EC5337B71EF78CD800ACE038 /* App.swift in Sources */,
 				ECC5B2CD1EF906CA001A97BC /* ViewController.swift in Sources */,
 				E3AFA685231686F2009E7EBE /* SnippetCellViewModel.swift in Sources */,
