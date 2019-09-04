@@ -13,8 +13,6 @@
 		E3AFA68023167C99009E7EBE /* API.Snippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AFA67F23167C99009E7EBE /* API.Snippet.swift */; };
 		E3AFA685231686F2009E7EBE /* SnippetCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AFA684231686F2009E7EBE /* SnippetCellViewModel.swift */; };
 		E3AFA687231687D7009E7EBE /* SnippetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AFA686231687D7009E7EBE /* SnippetListViewModel.swift */; };
-		E3E940AE2318192B00981455 /* YouTubeHorizinalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E940AC2318192B00981455 /* YouTubeHorizinalCell.swift */; };
-		E3E940AF2318192B00981455 /* YouTubeHorizinalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3E940AD2318192B00981455 /* YouTubeHorizinalCell.xib */; };
 		E3E96D022316C401003688B4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E96D012316C401003688B4 /* ViewModel.swift */; };
 		E3E96D072316D033003688B4 /* YoutubeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E96D052316D033003688B4 /* YoutubeCell.swift */; };
 		E3E96D082316D033003688B4 /* YoutubeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3E96D062316D033003688B4 /* YoutubeCell.xib */; };
@@ -96,8 +94,6 @@
 		E3AFA67F23167C99009E7EBE /* API.Snippet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.Snippet.swift; sourceTree = "<group>"; };
 		E3AFA684231686F2009E7EBE /* SnippetCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetCellViewModel.swift; sourceTree = "<group>"; };
 		E3AFA686231687D7009E7EBE /* SnippetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetListViewModel.swift; sourceTree = "<group>"; };
-		E3E940AC2318192B00981455 /* YouTubeHorizinalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeHorizinalCell.swift; sourceTree = "<group>"; };
-		E3E940AD2318192B00981455 /* YouTubeHorizinalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YouTubeHorizinalCell.xib; sourceTree = "<group>"; };
 		E3E96D012316C401003688B4 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		E3E96D052316D033003688B4 /* YoutubeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeCell.swift; sourceTree = "<group>"; };
 		E3E96D062316D033003688B4 /* YoutubeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YoutubeCell.xib; sourceTree = "<group>"; };
@@ -234,8 +230,6 @@
 			children = (
 				E3E96D052316D033003688B4 /* YoutubeCell.swift */,
 				E3E96D062316D033003688B4 /* YoutubeCell.xib */,
-				E3E940AC2318192B00981455 /* YouTubeHorizinalCell.swift */,
-				E3E940AD2318192B00981455 /* YouTubeHorizinalCell.xib */,
 				E3EDF4F52318B3FD002D4616 /* HeaderCell.swift */,
 				E3EDF4F62318B3FD002D4616 /* HeaderCell.xib */,
 				E3EDF4F92318C18C002D4616 /* HomeCollectionCell.swift */,
@@ -557,7 +551,6 @@
 				E3EDF4F82318B3FD002D4616 /* HeaderCell.xib in Resources */,
 				E3EBBD31231625180076D1FD /* ProfileViewController.xib in Resources */,
 				EC0105521E8F8AE000CE013D /* Assets.xcassets in Resources */,
-				E3E940AF2318192B00981455 /* YouTubeHorizinalCell.xib in Resources */,
 				EC5337BA1EF78E4D00ACE038 /* Localizable.strings in Resources */,
 				E3EDF4FC2318C18C002D4616 /* HomeCollectionCell.xib in Resources */,
 				E3EDF5022318DE8A002D4616 /* HeaderCollectionCell.xib in Resources */,
@@ -728,7 +721,6 @@
 				ECF23AB41E9B869B008C23C1 /* ApiManager.swift in Sources */,
 				E3EBBD28231624FE0076D1FD /* MapViewController.swift in Sources */,
 				E3EBBD30231625180076D1FD /* ProfileViewController.swift in Sources */,
-				E3E940AE2318192B00981455 /* YouTubeHorizinalCell.swift in Sources */,
 				ECEC0C5A1ED44D4100F6760A /* UIViewControllerExt.swift in Sources */,
 				ECEC0C581ED44C5D00F6760A /* String.swift in Sources */,
 				E3E96D022316C401003688B4 /* ViewModel.swift in Sources */,
