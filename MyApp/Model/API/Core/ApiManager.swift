@@ -12,6 +12,13 @@ import Alamofire
 typealias JSObject = [String: Any]
 typealias JSArray = [JSObject]
 
+enum GetSnippetResult {
+  case success
+  case failure
+}
+
+typealias GetSnippetCompletion = (GetSnippetResult) -> Void
+
 typealias Completion = (Result<Any>) -> Void
 
 let api = ApiManager()

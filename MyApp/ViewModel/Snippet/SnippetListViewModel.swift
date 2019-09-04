@@ -32,6 +32,7 @@ class SnippetListViewModel: MVVM.ViewModel {
   }
 
   func viewModelForItem(at indexPath: IndexPath) -> SnippetCellViewModel {
+
     guard let snippets = snippets else {
       fatalError("Please call `fetch()` first.")
     }
@@ -53,13 +54,6 @@ class SnippetListViewModel: MVVM.ViewModel {
       this.notify(change: change)
     })
   }
-
-  enum SnippetResult {
-    case success
-    case failure
-  }
-
-  typealias GetSnippetCompletion = (SnippetResult) -> Void
 
   func delete(index: Int, completion: @escaping GetSnippetCompletion) {
     guard let snip = snippets?[index] else { return }
