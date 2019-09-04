@@ -12,11 +12,6 @@ class HeaderCollectionCell: UICollectionViewCell, UIScrollViewDelegate {
   @IBOutlet weak var pageControl: UIPageControl!
   @IBOutlet weak var mainView: UIView!
   @IBOutlet weak var sliderScrollView: UIScrollView!
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    setupScroll()
-  }
-
   enum ImageSlider: String {
     case slide1
     case slide2
@@ -24,9 +19,14 @@ class HeaderCollectionCell: UICollectionViewCell, UIScrollViewDelegate {
     case slide4
   }
 
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    setupScroll()
+  }
+
   func setupScroll() {
     self.sliderScrollView.frame = CGRect(x: 0, y: 0, width: self.mainView.frame.width, height: self.mainView.frame.height)
-    let scrollViewWidth: CGFloat = self.mainView.frame.width
+    let scrollViewWidth: CGFloat = UIScreen.main.bounds.width
     let scrollViewHeight: CGFloat = 210
 
     let imgOne = UIImageView(frame: CGRect(x: 0, y: 0, width: scrollViewWidth, height: scrollViewHeight))
