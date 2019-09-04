@@ -44,6 +44,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
                                            left: 10.0,
                                            bottom: 0,
                                            right: 10.0)
+  
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -229,12 +230,13 @@ extension HomeViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       print(viewModel.viewModelForItem(at: indexPath).title)
   }
-
+  
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.section == SectionTableView.kHeaderSection.rawValue {
       return 210
     }
-    return 115
+
+    return 130
   }
 
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -294,7 +296,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     if section == SectionTableView.kHeaderSection.rawValue {
-      return UIEdgeInsets(top: 0.0,
+      return UIEdgeInsets(top: 5.0,
                           left: 0.0,
                           bottom: 0,
                           right: 0.0)
