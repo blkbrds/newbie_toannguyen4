@@ -40,7 +40,6 @@
 		EC5337B71EF78CD800ACE038 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5337B61EF78CD800ACE038 /* App.swift */; };
 		EC5337BA1EF78E4D00ACE038 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EC5337BC1EF78E4D00ACE038 /* Localizable.strings */; };
 		EC5337BE1EF78FEA00ACE038 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5337BD1EF78FEA00ACE038 /* Font.swift */; };
-		EC5337C11EF7939C00ACE038 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5337C01EF7939C00ACE038 /* TableCell.swift */; };
 		EC5337C31EF793B100ACE038 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5337C21EF793B100ACE038 /* CollectionCell.swift */; };
 		EC6FD30A1EF8B71200CB6642 /* DefaultsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6FD3091EF8B71200CB6642 /* DefaultsExt.swift */; };
 		ECC3B1C51EC17044001345C6 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC3B1C41EC17044001345C6 /* StringTests.swift */; };
@@ -123,7 +122,6 @@
 		EC5337B61EF78CD800ACE038 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		EC5337BB1EF78E4D00ACE038 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EC5337BD1EF78FEA00ACE038 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
-		EC5337C01EF7939C00ACE038 /* TableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		EC5337C21EF793B100ACE038 /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		EC6FD3091EF8B71200CB6642 /* DefaultsExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsExt.swift; sourceTree = "<group>"; };
 		ECC3B1C41EC17044001345C6 /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
@@ -329,7 +327,6 @@
 		EC5337BF1EF7933A00ACE038 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				EC5337C01EF7939C00ACE038 /* TableCell.swift */,
 				EC5337C21EF793B100ACE038 /* CollectionCell.swift */,
 				ECC5B2CA1EF90495001A97BC /* Button.swift */,
 				ECC5B2CC1EF906CA001A97BC /* ViewController.swift */,
@@ -702,7 +699,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3EBBD2C2316250A0076D1FD /* FavoriteViewController.swift in Sources */,
-				EC5337C11EF7939C00ACE038 /* TableCell.swift in Sources */,
 				ECF23AC31E9B9264008C23C1 /* StringExt.swift in Sources */,
 				E3AFA68023167C99009E7EBE /* API.Snippet.swift in Sources */,
 				ECEC0C5E1ED44D7700F6760A /* MapperExt.swift in Sources */,

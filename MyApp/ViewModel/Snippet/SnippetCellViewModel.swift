@@ -11,16 +11,15 @@ import MVVM
 
 final class SnippetCellViewModel: MVVM.ViewModel {
 
-  var publishedAt = ""
-  var channelId = ""
-  var title = ""
-  var des = ""
-  var thumbnails = ""
-  var channelTitle = ""
-  var liveBroadcastContent = ""
+  let publishedAt: String
+  let channelId: String
+  let title: String
+  let des: String
+  let thumbnails: String
+  let channelTitle: String
+  let liveBroadcastContent: String
 
-  init(snippet: Snippet?) {
-    guard let snippet = snippet else { return }
+  init(snippet: Snippet) {
     publishedAt = snippet.publishedAt
     channelId = snippet.channelId
     title = snippet.title
