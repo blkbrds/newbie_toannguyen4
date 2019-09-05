@@ -13,97 +13,70 @@ import MVVM
 import SwiftyJSON
 
 class SnippetListViewModel: MVVM.ViewModel {
-
-  private var snippets: Results<Snippet>?
-  private var token: NotificationToken?
+  weak var delegate: ViewModelDelegate?
+  private var snippetList: [Snippet] = []
+  var pageToken: String = ""
 
   func numberOfSections() -> Int {
-    guard let _ = snippets else {
+    if snippetList.isEmpty {
       return 0
     }
     return 1
   }
 
   func numberOfItems(inSection section: Int) -> Int {
-    guard let snippets = snippets else {
+    if snippetList.isEmpty {
       return 0
     }
-    return snippets.count
+    return snippetList.count
   }
 
   func viewModelForItem(at indexPath: IndexPath) -> SnippetCellViewModel {
-
-    guard let snippet = snippets?[indexPath.row] else {
-      fatalError("Please call `fetch()` first.")
+    guard let snippet: Snippet = snippetList[indexPath.row] else {
+      fatalError("Error with convert data faild")
     }
     return SnippetCellViewModel(snippet: snippet)
   }
 
   // MARK: - Action
 
-  func fetch() {
-    guard snippets == nil else { return }
-    do {
-      try snippets = Realm().objects(Snippet.self)
-    } catch {
-      snippets = nil
-    }
-    token = snippets?.observe({ [weak self] (change) in
-      guard let this = self else { return }
-      this.notify(change: change)
-    })
-  }
-
-  func delete(index: Int, completion: @escaping GetSnippetCompletion) {
-    guard let snip = snippets?[index] else { return }
-    do {
-      let realm = try Realm()
-      try realm.write {
-        realm.delete(snip)
-        completion(.success)
-      }
-    } catch {
-      completion(.failure)
-      print("can't delete")
-    }
-  }
-
-  func getSnippets(keySearch: String, completion: @escaping GetSnippetCompletion) {
-    let params = Api.Snippet.QueryParams(
-      token: "CBkQAA",
-      keyID: "AIzaSyDIJ9UssMoN9IfR9KnTc4lb3B9NtHpRF-c"
+  func fetchData(searchKey: String, completion: @escaping (APIError?) -> Void) {
+    //self.snippetList.removeAll()
+    let params = ApiManager.Snippet.QueryParams(
+      pageToken: pageToken,
+      maxResults: 50,
+      keyID: ApiManager.Key.keyID
     )
-
-    Api.Snippet.query(keySearch: keySearch, params: params) { (result) in
+    ApiManager.Snippet.getSnippet(searchKey: searchKey, params: params) { (result) in
+      print(result)
       switch result {
-      case .success(let data):
-        if let dict = data as? JSObject {
-          guard let items = dict["items"] as? JSArray else {
-            return
+        case .failure(let error):
+          completion(error)
+        case .success(let snippetResult):
+          self.snippetList.removeAll()
+          for snippet in snippetResult.snippets {
+            self.snippetList.append(snippet)
           }
+          self.insertDataToRealm(json: self.snippetList.toJSON())
+          self.pageToken = snippetResult.pageNextToken
+          completion(nil)
+      }
+    }
+  }
 
-          DispatchQueue.main.async {
-            do {
-              let realm = try Realm()
-              try realm.write {
-                realm.deleteAll()
-                for item in items {
-                  guard let snippet = item["snippet"] as? JSObject else {
-                    return
-                  }
-                  realm.add(Snippet(json: snippet))
-                }
-              }
-            } catch {
-              print("Error with Realm")
-            }
+  func insertDataToRealm(json: JSArray) {
+    //insert data to realm
+    DispatchQueue.main.async {
+      do {
+        let realm = try Realm()
+        try realm.write {
+          realm.deleteAll()
+          for item in json {
+            realm.add(Snippet(json: item))
           }
-        } else {
-          print("It's not")
         }
-        completion(.success)
-      case .failure(_):
-        completion(.failure)
+      } catch {
+        print("Error with Realm")
       }
     }
   }

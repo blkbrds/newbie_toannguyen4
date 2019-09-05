@@ -10,6 +10,7 @@ import UIKit
 import  MVVM
 import Realm
 import RealmSwift
+import SVProgressHUD
 
 class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
   enum SectionTableView: Int {
@@ -34,38 +35,35 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
   @IBOutlet weak var heightSearchBar: NSLayoutConstraint!
   private var refreshControl = UIRefreshControl()
   private var isDisplayTable = true
-  private var keySearch = "IOS"
+  private var keySearch = "IOS13"
 
   override func viewDidLoad() {
     super.viewDidLoad()
     registerNib()
     changeTypeDisplay()
-    fetchDataFromAPI()
-    viewModel.fetch()
     setupTitleNavi()
+    viewModel.delegate = self
+    loadData()
     // Refresh control add in tableview.
     refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
     refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     tableView.addSubview(refreshControl)
   }
 
-  func fetchDataFromAPI() {
-    viewModel.getSnippets(keySearch: self.keySearch) { [weak self] (result) in
-      guard let this = self else { return }
-      switch result {
-      case .success:
-        self?.updateView()
-      case .failure:
-        this.alert(error: "Can't load data!")
-      }
-      this.viewDidUpdated()
-    }
+  @objc func refresh(_ sender: Any) {
+    tableView.reloadData()
   }
 
-  @objc func refresh(_ sender: Any) {
-    DispatchQueue.main.async {
-      self.tableView.reloadData()
-      self.refreshControl.endRefreshing()
+  func loadData() {
+    SVProgressHUD.show()
+    self.viewModel.fetchData(searchKey: self.keySearch) { (error) in
+      if let error = error {
+        self.alert(error: error.localizedDescription)
+      } else {
+        //success
+        self.updateView()
+        SVProgressHUD.dismiss()
+      }
     }
   }
 
@@ -136,7 +134,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
 
   @objc func changeTypeDisplay() {
     setupRightNavigationItem()
-
+    loadData()
     if isDisplayTable {
       isDisplayTable = false
       tableView.isHidden = false
@@ -149,20 +147,22 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
   }
 }
 
+extension HomeViewController: ViewModelDelegate {
+  func viewModel(_ viewModel: ViewModel, didChangeItemsAt indexPaths: [IndexPath], changeType: ChangeType) {
+    updateView()
+  }
+}
+
 extension HomeViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    viewModel.getSnippets(keySearch: searchText) { [weak self] (result) in
-      guard let this = self else { return }
-      switch result {
-      case .success:
-        self?.updateView()
-      case .failure:
-        this.alert(error: "Can't load data!")
+    viewModel.fetchData(searchKey: searchText) { (error) in
+      if let error = error {
+        self.alert(error: error.localizedDescription)
+      } else {
+        self.updateView()
+        // success: display data search
       }
-      this.viewDidUpdated()
     }
-    viewModel.fetch()
-    updateView()
   }
 
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -178,14 +178,7 @@ extension HomeViewController: UISearchBarDelegate {
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
     searchBar.setShowsCancelButton(false, animated: true)
-    fetchDataFromAPI()
-    updateView()
-  }
-}
-
-extension HomeViewController: ViewModelDelegate {
-  func viewModel(_ viewModel: ViewModel, didChangeItemsAt indexPaths: [IndexPath], changeType: ChangeType) {
-    updateView()
+    loadData()
   }
 }
 
@@ -229,19 +222,13 @@ extension HomeViewController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     // 1
-    let shareAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
-      self.viewModel.delete(index: indexPath.row, completion: { (result) in
-        switch result {
-        case .success:
-          self.viewModel.fetch()
-          tableView.reloadData()
-          print("Delete completed!")
-        case .failure:
-          print("Delete faild")
-        }
+    if indexPath.section == SectionTableView.kYoutubeSection.rawValue {
+      let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+        //delete here
       })
-    })
-    return [shareAction]
+      return [deleteAction]
+    }
+    return nil
   }
 }
 

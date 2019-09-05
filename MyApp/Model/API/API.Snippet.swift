@@ -12,21 +12,55 @@ import ObjectMapper
 import Realm
 import RealmSwift
 
-extension Api.Snippet {
+extension ApiManager.Snippet {
+  struct QueryString {
+
+    func getSnippet(searchKey: String, params: ApiManager.Snippet.QueryParams) -> String {
+      return ApiManager.Path.baseURL + ApiManager.Path.search + "/pageToken=\(params.pageToken)&part=snippet&maxResults=\(params.maxResults)&order=relevance&q=\(searchKey)&key=\(params.keyID)"
+    }
+  }
+
+  struct SnippetResult {
+    var snippets: [Snippet]
+    var pageNextToken: String
+  }
+
   struct QueryParams {
-    let token: String
+    let pageToken: String
+    let maxResults: Int
     let keyID: String
   }
 
-  @discardableResult
-  static func query(keySearch: String, params: Api.Snippet.QueryParams, completion: @escaping Completion) -> Request? {
-    let path = Api.Path.Snippet(token: params.token, keySearch: keySearch, keyID: params.keyID)
-    return api.request(method: .get, urlString: path) { (result) in
-      Mapper<Snippet>().map(result: result, type: .object, completion: { (result) in
-        DispatchQueue.main.async {
-          completion(result)
+  static func getSnippet(searchKey: String, params: ApiManager.Snippet.QueryParams, completion: @escaping APICompletion<SnippetResult>) {
+    let urlString = QueryString().getSnippet(searchKey: searchKey, params: params)
+
+    API.shared().request(urlString: urlString) { (result) in
+      switch result {
+      case .failure(let error):
+        completion(.failure(error))
+      case .success(let data):
+        if let data = data {
+          let json = data.convertToJSON()
+          guard let items = json["items"] as? JSArray else {
+            return
+          }
+          var snippets = [Snippet]()
+          for item in items {
+            guard let snippet = item["snippet"] as? JSObject else {
+              return
+            }
+            let snip = Snippet(json: snippet)
+            snippets.append(snip)
+          }
+          guard let nextPageToken = json["nextPageToken"] as? String else {
+            return
+          }
+          completion(.success(SnippetResult(snippets: snippets, pageNextToken: nextPageToken)))
+        } else {
+          //handle error
+          completion(.failure(.error("Data format wrong!")))
         }
-      })
+      }
     }
   }
 }

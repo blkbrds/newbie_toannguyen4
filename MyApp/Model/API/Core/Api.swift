@@ -1,51 +1,38 @@
 import Foundation
 
-final class Api {
-  struct Path {
-    static let baseURL = "https://www.googleapis.com/youtube"
-  }
-  // MARK: - Services properties define
-  struct Downloader {}
+// Defines
+enum APIError: Error {
+  case error(String)
+  case errorURL
 
-  struct Snippet {
-    var id: Int
-  }
-}
-
-extension Api.Path {
-  struct Snippet: ApiPath {
-    static var path: String { return baseURL / "v3/search?" }
-    let token: String
-    let keySearch: String
-    let keyID: String
-    var urlString: String { return Snippet.path / "pageToken=\(token)&part=snippet&maxResults=50&order=relevance&q=\(keySearch)&key=\(keyID)" }
+  var localizedDescription: String {
+    switch self {
+    case .error(let string):
+      return string
+    case .errorURL:
+      return "URL String is error."
+    }
   }
 }
 
-protocol URLStringConvertible {
-  var urlString: String { get }
+typealias APICompletion<T> = (Result<T, APIError>) -> Void
+
+enum APIResult {
+  case success(Data?)
+  case failure(APIError)
 }
 
-protocol ApiPath: URLStringConvertible {
-  static var path: String { get }
-}
+struct API {
+  //singleton
+  private static var shareAPI: API = {
+    let shareAPI = API()
+    return shareAPI
+  }()
 
-extension URL: URLStringConvertible {
-  var urlString: String { return absoluteString }
-}
+  static func shared() -> API {
+    return shareAPI
+  }
 
-extension Int: URLStringConvertible {
-  var urlString: String { return String(describing: self) }
-}
-
-fileprivate func / (lhs: URLStringConvertible, rhs: URLStringConvertible) -> String {
-  return lhs.urlString + "/" + rhs.urlString
-}
-
-extension String: URLStringConvertible {
-  var urlString: String { return self }
-}
-
-extension CustomStringConvertible where Self: URLStringConvertible {
-  var urlString: String { return description }
+  //init
+  private init() {}
 }

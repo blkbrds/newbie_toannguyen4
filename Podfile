@@ -25,9 +25,10 @@ target 'MyApp' do
     pod 'Alamofire', '4.6.0' # Elegant HTTP Networking in Swift.
     pod 'AlamofireNetworkActivityIndicator', '2.2.0' # Controls the visibility of the network activity indicator on iOS using Alamofire.
     pod 'SDWebImage', '~> 5.0'
+    pod 'SVProgressHUD'
     # Utils
     #pod 'SwiftLint', '0.25.0'
-    pod 'SwiftLint'
+    #pod 'SwiftLint'
     pod 'SwiftUtils', '4.0.1' # Swift shorthand.
     pod 'SwiftDate', '4.5.0' # The best way to manage Dates and Timezones in Swift.
 

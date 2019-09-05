@@ -52,11 +52,8 @@
 		ECD1C29B1EA725B1000EC989 /* InputViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD1C29A1EA725B1000EC989 /* InputViewExt.swift */; };
 		ECEC0C581ED44C5D00F6760A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEC0C571ED44C5D00F6760A /* String.swift */; };
 		ECEC0C5A1ED44D4100F6760A /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEC0C591ED44D4100F6760A /* UIViewControllerExt.swift */; };
-		ECEC0C5E1ED44D7700F6760A /* MapperExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEC0C5D1ED44D7700F6760A /* MapperExt.swift */; };
 		ECF23AB41E9B869B008C23C1 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF23AB11E9B869B008C23C1 /* ApiManager.swift */; };
 		ECF23ABA1E9B89B2008C23C1 /* RequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF23AB71E9B89B2008C23C1 /* RequestSerializer.swift */; };
-		ECF23ABB1E9B89B2008C23C1 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF23AB81E9B89B2008C23C1 /* ResponseSerializer.swift */; };
-		ECF23ABE1E9B8A6A008C23C1 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF23ABD1E9B8A6A008C23C1 /* Error.swift */; };
 		ECF23AC31E9B9264008C23C1 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF23AC21E9B9264008C23C1 /* StringExt.swift */; };
 		F1C6352C1EF141F300D0A1A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C6352B1EF141F300D0A1A0 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -138,11 +135,8 @@
 		ECD1C29A1EA725B1000EC989 /* InputViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewExt.swift; sourceTree = "<group>"; };
 		ECEC0C571ED44C5D00F6760A /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		ECEC0C591ED44D4100F6760A /* UIViewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
-		ECEC0C5D1ED44D7700F6760A /* MapperExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapperExt.swift; sourceTree = "<group>"; };
 		ECF23AB11E9B869B008C23C1 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		ECF23AB71E9B89B2008C23C1 /* RequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSerializer.swift; sourceTree = "<group>"; };
-		ECF23AB81E9B89B2008C23C1 /* ResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSerializer.swift; sourceTree = "<group>"; };
-		ECF23ABD1E9B8A6A008C23C1 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		ECF23AC21E9B9264008C23C1 /* StringExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 		F1C6352B1EF141F300D0A1A0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F49F1AB05FCB88523C52A0ED /* Pods_MyApp_MyAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyApp_MyAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -422,9 +416,7 @@
 			children = (
 				EC332A471EA0A8CB0011DF1E /* Api.swift */,
 				ECF23AB11E9B869B008C23C1 /* ApiManager.swift */,
-				ECF23ABD1E9B8A6A008C23C1 /* Error.swift */,
 				ECF23AB71E9B89B2008C23C1 /* RequestSerializer.swift */,
-				ECF23AB81E9B89B2008C23C1 /* ResponseSerializer.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -441,7 +433,6 @@
 			isa = PBXGroup;
 			children = (
 				ECD1C29A1EA725B1000EC989 /* InputViewExt.swift */,
-				ECEC0C5D1ED44D7700F6760A /* MapperExt.swift */,
 				ECF23AC21E9B9264008C23C1 /* StringExt.swift */,
 				ECEC0C591ED44D4100F6760A /* UIViewControllerExt.swift */,
 				EC6FD3091EF8B71200CB6642 /* DefaultsExt.swift */,
@@ -469,7 +460,6 @@
 			buildConfigurationList = ECCCCB351E7A40D10073D923 /* Build configuration list for PBXNativeTarget "MyApp" */;
 			buildPhases = (
 				B0E09827A261C794A6F031AA /* [CP] Check Pods Manifest.lock */,
-				EC8C6FF51ECAF27D00C52F7A /* SwiftLint */,
 				ECCCCB141E7A40D00073D923 /* Sources */,
 				ECCCCB151E7A40D00073D923 /* Frameworks */,
 				ECCCCB161E7A40D00073D923 /* Resources */,
@@ -625,6 +615,7 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftUtils/SwiftUtils.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -638,6 +629,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftUtils.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -661,6 +653,7 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftUtils/SwiftUtils.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -674,6 +667,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftUtils.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -682,20 +676,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyApp/Pods-MyApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		EC8C6FF51ECAF27D00C52F7A /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [[ \"$CI\" == 'true' ]]; then\n    exit 0\nfi\n\nif [[ -s \"${PODS_ROOT}/SwiftLint/swiftlint\" ]]; then\n    echo 'Linting...'\n    \"${PODS_ROOT}/SwiftLint/swiftlint\"\nelse\n    echo 'error: SwiftLint not installed, please read README first.'\n    exit 1\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -707,7 +687,6 @@
 				E3EBBD2C2316250A0076D1FD /* FavoriteViewController.swift in Sources */,
 				ECF23AC31E9B9264008C23C1 /* StringExt.swift in Sources */,
 				E3AFA68023167C99009E7EBE /* API.Snippet.swift in Sources */,
-				ECEC0C5E1ED44D7700F6760A /* MapperExt.swift in Sources */,
 				E3EA2639231F5F620087914C /* Size.swift in Sources */,
 				EC5337B71EF78CD800ACE038 /* App.swift in Sources */,
 				ECC5B2CD1EF906CA001A97BC /* ViewController.swift in Sources */,
@@ -734,8 +713,6 @@
 				E3E96D072316D033003688B4 /* YoutubeCell.swift in Sources */,
 				E3EBBD35231629240076D1FD /* Dictionary.swift in Sources */,
 				E3AFA687231687D7009E7EBE /* SnippetListViewModel.swift in Sources */,
-				ECF23ABB1E9B89B2008C23C1 /* ResponseSerializer.swift in Sources */,
-				ECF23ABE1E9B8A6A008C23C1 /* Error.swift in Sources */,
 				E3EDF4F72318B3FD002D4616 /* HeaderCell.swift in Sources */,
 				E3EDF5012318DE8A002D4616 /* HeaderCollectionCell.swift in Sources */,
 				EC5337B51EF7845700ACE038 /* Color.swift in Sources */,

@@ -9,16 +9,18 @@
 import Foundation
 
 extension Data {
-  func toJSON() -> Any? {
+  func convertToJSON() -> [String: Any] {
+    var json: [String: Any] = [:]
     do {
-      return try JSONSerialization.jsonObject(
-        with: self,
-        options: JSONSerialization.ReadingOptions.allowFragments
-      )
+      if let jsonObj = try JSONSerialization.jsonObject(with: self, options: .mutableContainers) as? [String: Any] {
+        json = jsonObj
+      }
     } catch {
-      return nil
+      print("JSON casting error")
     }
+    return json
   }
+
   func toString() -> String? {
     return String(data: self, encoding: .utf8)
   }

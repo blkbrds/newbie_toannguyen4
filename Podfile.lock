@@ -15,8 +15,8 @@ PODS:
   - SDWebImage (5.1.0):
     - SDWebImage/Core (= 5.1.0)
   - SDWebImage/Core (5.1.0)
+  - SVProgressHUD (2.2.5)
   - SwiftDate (4.5.0)
-  - SwiftLint (0.25.0)
   - SwiftUtils (4.0.1)
   - SwiftyJSON (4.3.0)
 
@@ -29,8 +29,8 @@ DEPENDENCIES:
   - ObjectMapper (~> 3.4)
   - RealmSwift
   - SDWebImage (~> 5.0)
+  - SVProgressHUD
   - SwiftDate (= 4.5.0)
-  - SwiftLint
   - SwiftUtils (= 4.0.1)
   - SwiftyJSON (~> 4.0)
 
@@ -45,8 +45,8 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SDWebImage
+    - SVProgressHUD
     - SwiftDate
-    - SwiftLint
     - SwiftUtils
     - SwiftyJSON
 
@@ -60,11 +60,11 @@ SPEC CHECKSUMS:
   Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
   RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
   SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftDate: 17dd829c004a2d60432ef63ffcdb26ca2eb97a60
-  SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
   SwiftUtils: b009d391fb2e285392f114238f8b55d2750b80f0
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 1a708228107dab34530a3997d54caa459ca41ea8
+PODFILE CHECKSUM: 64204a9be0e0b137b745729dd90290b6868c0c56
 
 COCOAPODS: 1.7.5
