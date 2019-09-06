@@ -18,6 +18,7 @@ final class Snippet: Object, Mappable {
     self.init()
   }
 
+  @objc dynamic var videoId = ""
   @objc dynamic var publishedAt = ""
   @objc dynamic var channelId = ""
   @objc dynamic var title = ""
@@ -25,38 +26,51 @@ final class Snippet: Object, Mappable {
   @objc dynamic var thumbnails = ""
   @objc dynamic var channelTitle = ""
   @objc dynamic var liveBroadcastContent = ""
+  @objc dynamic var isFavorite = ""
 
   convenience init(json: JSObject) {
     var schema: [String: Any] = [:]
-    if let publishedAt = json["publishedAt"] {
-      schema["publishedAt"] = publishedAt
-    }
-    if let channelId = json["channelId"] {
-      schema["channelId"] = channelId
-    }
-    if let title = json["title"] {
-      schema["title"] = title
-    }
-    if let defaultUrl = json["thumbnails"] as? JSObject {
-      if let thumb = defaultUrl["medium"] as? JSObject {
-        if let thumbUrl = thumb["url"] {
-          schema["thumbnails"] = thumbUrl
-        }
+    if let video: JSObject = json["id"] as? JSObject {
+      if let id = video["videoId"] as? String {
+        schema["videoId"] = id
       }
     }
-    if let description = json["description"] {
-      schema["des"] = description
+
+    if let snippet: JSObject = json["snippet"] as? JSObject {
+      if let publishedAt = snippet["publishedAt"] {
+        schema["publishedAt"] = publishedAt
+      }
+      if let channelId = snippet["channelId"] {
+        schema["channelId"] = channelId
+      }
+      if let title = snippet["title"] {
+        schema["title"] = title
+      }
+      if let defaultUrl = snippet["thumbnails"] as? JSObject {
+        if let thumb = defaultUrl["medium"] as? JSObject {
+          if let thumbUrl = thumb["url"] {
+            schema["thumbnails"] = thumbUrl
+          }
+        }
+      }
+      if let description = snippet["description"] {
+        schema["des"] = description
+      }
+      if let channelTitle = snippet["channelTitle"] {
+        schema["channelTitle"] = channelTitle
+      }
+      if let liveBroadcastContent = snippet["liveBroadcastContent"] {
+        schema["liveBroadcastContent"] = liveBroadcastContent
+      }
     }
-    if let channelTitle = json["channelTitle"] {
-      schema["channelTitle"] = channelTitle
-    }
-    if let liveBroadcastContent = json["liveBroadcastContent"] {
-      schema["liveBroadcastContent"] = liveBroadcastContent
-    }
+
+    schema["isFavorite"] = "1"
+
     self.init(value: schema)
   }
 
   func mapping(map: Map) {
+    videoId <- map["videoId"]
     publishedAt <- map["publishedAt"]
     channelId <- map["channelId"]
     title <- map["title"]
@@ -64,5 +78,6 @@ final class Snippet: Object, Mappable {
     thumbnails <- map["thumbnails"]
     channelTitle <- map["channelTitle"]
     liveBroadcastContent <- map["liveBroadcastContent"]
+    isFavorite <- map["isFavorite"]
   }
 }

@@ -44,6 +44,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
     setupTitleNavi()
     viewModel.delegate = self
     loadData()
+   //
+    //viewModel.fetch()
     // Refresh control add in tableview.
     refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
     refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -51,7 +53,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
   }
 
   @objc func refresh(_ sender: Any) {
-    tableView.reloadData()
+    loadData()
+    refreshControl.endRefreshing()
+    SVProgressHUD.dismiss()
   }
 
   func loadData() {
@@ -134,12 +138,14 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
 
   @objc func changeTypeDisplay() {
     setupRightNavigationItem()
-    loadData()
+
     if isDisplayTable {
       isDisplayTable = false
       tableView.isHidden = false
       collectionView.isHidden = true
     } else {
+      //loadData()
+      collectionView.reloadData()
       isDisplayTable = true
       tableView.isHidden = true
       collectionView.isHidden = false
