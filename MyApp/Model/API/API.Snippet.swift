@@ -46,6 +46,9 @@ extension ApiManager.Snippet {
           }
           var snippets = [Snippet]()
           for item in items {
+            guard let snippet = item["snippet"] as? JSObject else {
+              return
+            }
             let snip = Snippet(json: item)
             snippets.append(snip)
           }

@@ -13,6 +13,7 @@ import RealmSwift
 import ObjectMapper
 import Realm
 
+
 final class Snippet: Object, Mappable {
   required convenience init?(map: Map) {
     self.init()
@@ -30,13 +31,8 @@ final class Snippet: Object, Mappable {
 
   convenience init(json: JSObject) {
     var schema: [String: Any] = [:]
-    if let video: JSObject = json["id"] as? JSObject {
-      if let id = video["videoId"] as? String {
-        schema["videoId"] = id
-      }
-    }
-
     if let snippet: JSObject = json["snippet"] as? JSObject {
+      
       if let publishedAt = snippet["publishedAt"] {
         schema["publishedAt"] = publishedAt
       }
@@ -46,26 +42,30 @@ final class Snippet: Object, Mappable {
       if let title = snippet["title"] {
         schema["title"] = title
       }
-      if let defaultUrl = snippet["thumbnails"] as? JSObject {
-        if let thumb = defaultUrl["medium"] as? JSObject {
-          if let thumbUrl = thumb["url"] {
-            schema["thumbnails"] = thumbUrl
-          }
-        }
-      }
       if let description = snippet["description"] {
         schema["des"] = description
       }
       if let channelTitle = snippet["channelTitle"] {
         schema["channelTitle"] = channelTitle
       }
+      if let defaultUrl = snippet["thumbnails"] as? JSObject {
+        if let thumb = defaultUrl["medium"] as? JSObject {
+          if let thumbUrl = thumb["url"] as? String{
+            schema["thumbnails"] = thumbUrl
+          }
+        }
+      }
       if let liveBroadcastContent = snippet["liveBroadcastContent"] {
         schema["liveBroadcastContent"] = liveBroadcastContent
       }
     }
+    if let video: JSObject = json["id"] as? JSObject {
+      if let id = video["videoId"] as? String {
+        schema["videoId"] = id
+      }
+    }
 
-    schema["isFavorite"] = "1"
-
+    schema["isFavorite"] = "0"
     self.init(value: schema)
   }
 
@@ -79,5 +79,7 @@ final class Snippet: Object, Mappable {
     channelTitle <- map["channelTitle"]
     liveBroadcastContent <- map["liveBroadcastContent"]
     isFavorite <- map["isFavorite"]
+
   }
 }
+

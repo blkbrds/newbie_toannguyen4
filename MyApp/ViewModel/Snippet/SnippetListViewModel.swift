@@ -47,37 +47,26 @@ class SnippetListViewModel: MVVM.ViewModel {
     //self.snippetList.removeAll()
     let params = ApiManager.Snippet.QueryParams(
       pageToken: pageToken,
-      maxResults: 30,
+      maxResults: 3,
       keyID: ApiManager.Key.keyID
     )
     ApiManager.Snippet.getSnippet(searchKey: searchKey, params: params) { (result) in
       switch result {
-        case .failure(let error):
-          completion(error)
-        case .success(let snippetResult):
-          self.snippetList.removeAll()
-          for snippet in snippetResult.snippets {
-            self.snippetList.append(snippet)
-          }
-         self.insertDataToRealm(json: self.snippetList.toJSON())
-          self.pageToken = snippetResult.pageNextToken
-          completion(nil)
+      case .failure(let error):
+        completion(error)
+      case .success(let snippetResult):
+        self.snippetList.removeAll()
+
+        for snippet in snippetResult.snippets {
+          self.snippetList.append(snippet)
+        }
+
+       self.insertDataToRealm(json: snippetResult.snippets.toJSON())
+        self.pageToken = snippetResult.pageNextToken
+        completion(nil)
       }
     }
   }
-
-//  func fetch() {
-//    guard snippets == nil else { return }
-//    do {
-//      try snippets = Realm().objects(Snippet.self)
-//    } catch {
-//      snippets = nil
-//    }
-//    token = snippets?.observe({ [weak self] (change) in
-//      guard let this = self else { return }
-//      this.notify(change: change)
-//    })
-//  }
 
   func insertDataToRealm(json: JSArray) {
     //insert data to realm
@@ -87,8 +76,9 @@ class SnippetListViewModel: MVVM.ViewModel {
         try realm.write {
           realm.deleteAll()
           for item in json {
+            print(item)
             let snip = Snippet(json: item)
-           realm.add(snip)
+            realm.add(snip)
           }
         }
       } catch {
