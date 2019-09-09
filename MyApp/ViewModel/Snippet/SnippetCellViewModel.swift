@@ -18,8 +18,10 @@ final class SnippetCellViewModel: MVVM.ViewModel {
   let thumbnails: String
   let channelTitle: String
   let liveBroadcastContent: String
+  let videoId: String
 
   init(snippet: Snippet) {
+    videoId = snippet.videoId
     publishedAt = snippet.publishedAt
     channelId = snippet.channelId
     title = snippet.title
