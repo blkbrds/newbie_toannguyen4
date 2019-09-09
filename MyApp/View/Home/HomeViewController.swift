@@ -12,7 +12,7 @@ import Realm
 import RealmSwift
 import SVProgressHUD
 
-class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
+final class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
   enum SectionTableView: Int {
     case kHeaderSection = 0
     case kYoutubeSection
