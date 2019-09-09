@@ -31,11 +31,11 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
 
   var favoriteViewModel = FavoriteViewModel()
 
-  @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var collectionView: UICollectionView!
-  @IBOutlet weak var searchBar: UISearchBar!
-  @IBOutlet weak var heightSearchBar: NSLayoutConstraint!
-  private var refreshControl = UIRefreshControl()
+  @IBOutlet weak var tableView: TableView!
+  @IBOutlet weak var collectionView: CollectionView!
+  @IBOutlet weak var searchBar: SearchBar!
+  @IBOutlet weak var heightSearchBar: LayoutConstraint!
+  private var refreshControl = RefreshControl()
   private var isDisplayTable = true
   private var keySearch = "IOS13"
 

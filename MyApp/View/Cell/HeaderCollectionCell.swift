@@ -9,9 +9,9 @@
 import UIKit
 
 final class HeaderCollectionCell: UICollectionViewCell, UIScrollViewDelegate {
-  @IBOutlet weak private var pageControl: UIPageControl!
-  @IBOutlet weak private var mainView: UIView!
-  @IBOutlet weak private var sliderScrollView: UIScrollView!
+  @IBOutlet weak private var pageControl: PageControl!
+  @IBOutlet weak private var mainView: View!
+  @IBOutlet weak private var sliderScrollView: ScrollView!
   enum ImageSlider: String {
     case slide1 = "img-slide1"
     case slide2 = "img-slide2"
@@ -65,7 +65,7 @@ final class HeaderCollectionCell: UICollectionViewCell, UIScrollViewDelegate {
 private typealias SliderScroll = HeaderCollectionCell
 
 extension SliderScroll {
-  func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+  func scrollViewDidEndScrollingAnimation(_ scrollView: ScrollView) {
     // Test the offset and calculate the current page after scrolling ends
     let pageWidth: CGFloat = scrollView.frame.width
     let currentPage: CGFloat = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1

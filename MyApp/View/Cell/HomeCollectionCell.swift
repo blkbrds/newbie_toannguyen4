@@ -14,16 +14,16 @@ import CoreImage
 
 class HomeCollectionCell: UICollectionViewCell, MVVM.View {
 
-  @IBOutlet weak var thumbnailImage: UIImageView!
-  @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var favoriteImage: UIImageView!
-  @IBOutlet weak var containView: UIView!
+  @IBOutlet weak var thumbnailImage: ImageView!
+  @IBOutlet weak var titleLabel: Label!
+  @IBOutlet weak var favoriteImage: ImageView!
+  @IBOutlet weak var containView: View!
   var viewModel: SnippetCellViewModel? {
     didSet {
       updateView()
     }
   }
-  var image: UIImage? {
+  var image: Image? {
     didSet {
       updateContentModeImageView()
     }

@@ -11,7 +11,7 @@ import MapKit
 
 class MapViewController: UIViewController {
 
-  weak var mapView: MKMapView!
+  weak var mapView: MapView!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -28,7 +28,7 @@ class MapViewController: UIViewController {
 
   func configMapView() {
     // Add map view
-    let mapView = MKMapView(frame: UIScreen.main.bounds)
+    let mapView = MapView(frame: UIScreen.main.bounds)
     self.mapView = mapView
     view.addSubview(mapView)
 

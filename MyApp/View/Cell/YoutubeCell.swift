@@ -12,10 +12,10 @@ import SDWebImage
 import SwiftDate
 
 class YoutubeCell: UITableViewCell, MVVM.View {
-  @IBOutlet weak var thumbnailImage: UIImageView!
-  @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var chanelLabel: UILabel!
-  @IBOutlet weak var favoriteButton: UIButton!
+  @IBOutlet weak var thumbnailImage: ImageView!
+  @IBOutlet weak var titleLabel: Label!
+  @IBOutlet weak var chanelLabel: Label!
+  @IBOutlet weak var favoriteButton: Button!
   var viewModel: SnippetCellViewModel? {
     didSet {
       updateView()
