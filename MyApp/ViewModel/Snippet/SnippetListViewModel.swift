@@ -59,15 +59,14 @@ class SnippetListViewModel: MVVM.ViewModel {
           self.snippetList.append(snippet)
         }
 
-        self.insertDataToRealm(json: snippetResult.snippets.toJSON())
-
+        self.insertDataToRealm(json: snippetResult.snippets)
         self.pageToken = snippetResult.pageNextToken
         completion(nil)
       }
     }
   }
 
-  func insertDataToRealm(json: JSArray) {
+  func insertDataToRealm(json: [Snippet]) {
     //insert data to realm
     DispatchQueue.main.async {
       do {
@@ -75,8 +74,7 @@ class SnippetListViewModel: MVVM.ViewModel {
         try realm.write {
           realm.deleteAll()
           for item in json {
-            let snip = Snippet(json: item)
-            realm.add(snip)
+            realm.add(item)
           }
         }
       } catch {
