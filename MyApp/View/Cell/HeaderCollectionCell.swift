@@ -63,6 +63,7 @@ final class HeaderCollectionCell: UICollectionViewCell, UIScrollViewDelegate {
 }
 
 private typealias SliderScroll = HeaderCollectionCell
+
 extension SliderScroll {
   func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
     // Test the offset and calculate the current page after scrolling ends
