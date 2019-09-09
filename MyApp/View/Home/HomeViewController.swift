@@ -19,8 +19,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
   }
 
   enum IconRightNavigation: String {
-    case table
-    case collection
+    case table = "ic-table"
+    case collection = "ic-collection"
   }
 
   var viewModel = SnippetListViewModel() {

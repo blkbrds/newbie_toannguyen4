@@ -47,7 +47,7 @@
                                     <constraint firstAttribute="width" constant="25" id="FSm-vc-HL5"/>
                                     <constraint firstAttribute="height" constant="25" id="mJJ-7u-zQt"/>
                                 </constraints>
-                                <state key="normal" image="favoriteInActive"/>
+                                <state key="normal" image="ic-favoriteInActive"/>
                             </button>
                         </subviews>
                         <constraints>
@@ -83,7 +83,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="favoriteInActive" width="25" height="25"/>
+        <image name="ic-favoriteInActive" width="25" height="25"/>
         <image name="youtube" width="50" height="50"/>
     </resources>
 </document>

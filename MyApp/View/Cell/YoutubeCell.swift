@@ -28,7 +28,7 @@ class YoutubeCell: UITableViewCell, MVVM.View {
   }
 
   enum ImagePlaceHolder: String {
-    case youtube
+    case youtube = "img-youtube"
   }
 
   func updateView() {

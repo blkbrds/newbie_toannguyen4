@@ -46,17 +46,17 @@ extension AppDelegate {
   }
 
   enum ImageSelectedForTabar: String {
-    case homeActive
-    case mapActive
-    case favoriteActive
-    case profileActive
+    case homeActive = "ic-homeActive"
+    case mapActive  = "ic-mapActive"
+    case favoriteActive = "ic-favoriteActive"
+    case profileActive = "ic-profileActive"
   }
 
   enum ImageDeSelectForTabar: String {
-    case homeInActive
-    case mapInActive
-    case favoriteInActive
-    case profileInActive
+    case homeInActive = "ic-homeInActive"
+    case mapInActive = "ic-mapInActive"
+    case favoriteInActive = "ic-favoriteInActive"
+    case profileInActive = "ic-profileInActive"
   }
 
   private func configTabarController() {

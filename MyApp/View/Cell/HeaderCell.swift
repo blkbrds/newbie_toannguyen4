@@ -14,10 +14,10 @@ class HeaderCell: UITableViewCell, UIScrollViewDelegate {
   @IBOutlet weak var pageControl: UIPageControl!
 
   enum ImageSlider: String {
-    case slide1
-    case slide2
-    case slide3
-    case slide4
+    case slide1 = "img-slide1"
+    case slide2 = "img-slide2"
+    case slide3 = "img-slide3"
+    case slide4 = "img-slide4"
   }
 
   override func awakeFromNib() {

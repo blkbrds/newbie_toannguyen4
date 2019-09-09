@@ -35,7 +35,7 @@ class HomeCollectionCell: UICollectionViewCell, MVVM.View {
   }
 
   enum ImagePlaceHolder: String {
-    case youtube
+    case youtube = "img-youtube"
   }
 
   func updateView() {
