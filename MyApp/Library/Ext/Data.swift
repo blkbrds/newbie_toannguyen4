@@ -16,7 +16,7 @@ extension Data {
         json = jsonObj
       }
     } catch {
-      print("JSON casting error")
+      json = [:]
     }
     return json
   }
