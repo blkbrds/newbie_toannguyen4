@@ -6,7 +6,6 @@
 //  Copyright © 2019 Asian Tech Co., Ltd. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension App {
