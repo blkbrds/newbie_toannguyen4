@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeaderCollectionCell: UICollectionViewCell, UIScrollViewDelegate {
+final class HeaderCollectionCell: UICollectionViewCell, UIScrollViewDelegate {
   @IBOutlet weak var pageControl: UIPageControl!
   @IBOutlet weak var mainView: UIView!
   @IBOutlet weak var sliderScrollView: UIScrollView!
