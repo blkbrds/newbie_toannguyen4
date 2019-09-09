@@ -242,7 +242,7 @@ extension HomeViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.section == SectionTableView.kHeaderSection.rawValue {
-      return App.SizeHomeTableViewCell.kHeightHeaderSection
+      return App.SizeHeaderSection.kHeightHeaderSection
     }
     return App.SizeHomeTableViewCell.kHeightCellSection
   }
@@ -292,7 +292,7 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     if indexPath.section == SectionTableView.kHeaderSection.rawValue {
-      return CGSize(width: App.SizeHomeCollectionViewCell.kWidthHeaderSection, height: App.SizeHomeCollectionViewCell.kHeightHeaderSection)
+      return CGSize(width: App.SizeHomeCollectionViewCell.kWidthHeaderSection, height: App.SizeHeaderSection.kHeightHeaderSection)
     }
     return CGSize(width: App.SizeHomeCollectionViewCell.kCellWidth, height: App.SizeHomeCollectionViewCell.kCellheight)
   }
