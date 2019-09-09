@@ -88,10 +88,10 @@ extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
     guard let circle = overlay as? MKCircle else { return MKOverlayRenderer() }
     let circleRenderer = MKCircleRenderer(circle: circle)
-    circleRenderer.fillColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 0.3)
-    circleRenderer.strokeColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 0.7)
-    circleRenderer.lineWidth = 3
-    circleRenderer.lineDashPhase = 10
+    circleRenderer.fillColor = App.Color.mapFillColor
+    circleRenderer.strokeColor = App.Color.mapStrokeColor
+    circleRenderer.lineWidth = App.SizeMap.lineWidth
+    circleRenderer.lineDashPhase = App.SizeMap.lineDashPhase
     return circleRenderer
   }
 }

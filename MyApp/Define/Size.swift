@@ -41,4 +41,9 @@ extension App {
     static let kWidth: CGFloat = 30
     static let kHeigh: CGFloat = 30
   }
+
+  struct SizeMap {
+    static let lineWidth: CGFloat = 3
+    static let lineDashPhase: CGFloat = 10
+  }
 }

@@ -19,7 +19,9 @@ extension App {
         static let tableHeaderView = UIColor.gray
         static let tableFooterView = UIColor.red
         static let tableCellTextLabel = UIColor.yellow
-
+        static let mapFillColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 0.3)
+        static let mapStrokeColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 0.7)
+      
         static func button(state: UIControlState) -> UIColor {
             switch state {
             case UIControlState.normal: return .blue
