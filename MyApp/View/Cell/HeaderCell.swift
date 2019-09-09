@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeaderCell: UITableViewCell, UIScrollViewDelegate {
+final class HeaderCell: UITableViewCell, UIScrollViewDelegate {
   @IBOutlet weak var sliderScrollView: UIScrollView!
   @IBOutlet weak var mainView: UIView!
   @IBOutlet weak var pageControl: UIPageControl!
