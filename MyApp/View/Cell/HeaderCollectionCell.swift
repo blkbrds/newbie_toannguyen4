@@ -9,9 +9,9 @@
 import UIKit
 
 final class HeaderCollectionCell: UICollectionViewCell, UIScrollViewDelegate {
-  @IBOutlet weak var pageControl: UIPageControl!
-  @IBOutlet weak var mainView: UIView!
-  @IBOutlet weak var sliderScrollView: UIScrollView!
+  @IBOutlet weak private var pageControl: UIPageControl!
+  @IBOutlet weak private var mainView: UIView!
+  @IBOutlet weak private var sliderScrollView: UIScrollView!
   enum ImageSlider: String {
     case slide1 = "img-slide1"
     case slide2 = "img-slide2"

@@ -9,9 +9,9 @@
 import UIKit
 
 final class HeaderCell: UITableViewCell, UIScrollViewDelegate {
-  @IBOutlet weak var sliderScrollView: UIScrollView!
-  @IBOutlet weak var mainView: UIView!
-  @IBOutlet weak var pageControl: UIPageControl!
+  @IBOutlet weak private var sliderScrollView: UIScrollView!
+  @IBOutlet weak private var mainView: UIView!
+  @IBOutlet weak private var pageControl: UIPageControl!
 
   enum ImageSlider: String {
     case slide1 = "img-slide1"
