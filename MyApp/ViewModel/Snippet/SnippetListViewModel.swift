@@ -16,6 +16,7 @@ class SnippetListViewModel: MVVM.ViewModel {
 
   weak var delegate: ViewModelDelegate?
   private var snippetList: [Snippet] = []
+  private let maximumResults: Int = 30
   var pageToken: String = ""
 
   func numberOfSections() -> Int {
@@ -45,7 +46,7 @@ class SnippetListViewModel: MVVM.ViewModel {
     //self.snippetList.removeAll()
     let params = ApiManager.Snippet.QueryParams(
       pageToken: pageToken,
-      maxResults: 30,
+      maxResults: maximumResults,
       keyID: ApiManager.Key.keyID
     )
     ApiManager.Snippet.getSnippet(searchKey: searchKey, params: params) { (result) in
