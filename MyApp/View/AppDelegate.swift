@@ -65,30 +65,30 @@ extension AppDelegate {
     let homeViewController = HomeViewController()
     let homeNavigationController = UINavigationController(rootViewController: homeViewController)
     homeNavigationController.tabBarItem = UITabBarItem(
-                                              title: TitleTabbarItem.home.rawValue.capitalized,
-                                              image: UIImage(named: ImageSelectedForTabbar.homeActive.rawValue),
-                                              selectedImage: UIImage(named: ImageDeSelectForTabbar.homeInActive.rawValue))
+      title: TitleTabbarItem.home.rawValue.capitalized,
+      image: UIImage(named: ImageSelectedForTabbar.homeActive.rawValue),
+      selectedImage: UIImage(named: ImageDeSelectForTabbar.homeInActive.rawValue))
     //config tab Map
     let mapViewController = MapViewController()
     let mapNavigationController = UINavigationController(rootViewController: mapViewController)
     mapNavigationController.tabBarItem = UITabBarItem(
-                                              title: TitleTabbarItem.map.rawValue.capitalized,
-                                              image: UIImage(named: ImageSelectedForTabbar.mapActive.rawValue),
-                                              selectedImage: UIImage(named: ImageDeSelectForTabbar.mapInActive.rawValue))
+      title: TitleTabbarItem.map.rawValue.capitalized,
+      image: UIImage(named: ImageSelectedForTabbar.mapActive.rawValue),
+      selectedImage: UIImage(named: ImageDeSelectForTabbar.mapInActive.rawValue))
     //config tab Favorite
     let favoriteViewController = FavoriteViewController()
     let favoriteNavigationController = UINavigationController(rootViewController: favoriteViewController)
     favoriteNavigationController.tabBarItem = UITabBarItem(
-                                              title: TitleTabbarItem.favorite.rawValue.capitalized,
-                                              image: UIImage(named: ImageSelectedForTabbar.favoriteActive.rawValue),
-                                              selectedImage: UIImage(named: ImageDeSelectForTabbar.favoriteInActive.rawValue))
+      title: TitleTabbarItem.favorite.rawValue.capitalized,
+      image: UIImage(named: ImageSelectedForTabbar.favoriteActive.rawValue),
+      selectedImage: UIImage(named: ImageDeSelectForTabbar.favoriteInActive.rawValue))
     //config tab Profile
     let profileViewController = ProfileViewController()
     let profileNavigationController = UINavigationController(rootViewController: profileViewController)
     profileNavigationController.tabBarItem = UITabBarItem(
-                                              title: TitleTabbarItem.profile.rawValue.capitalized,
-                                              image: UIImage(named: ImageSelectedForTabbar.profileActive.rawValue),
-                                              selectedImage: UIImage(named: ImageDeSelectForTabbar.profileInActive.rawValue))
+      title: TitleTabbarItem.profile.rawValue.capitalized,
+      image: UIImage(named: ImageSelectedForTabbar.profileActive.rawValue),
+      selectedImage: UIImage(named: ImageDeSelectForTabbar.profileInActive.rawValue))
     //add tabar item in tabarController
     let viewControllers = [homeNavigationController, mapNavigationController, favoriteNavigationController, profileNavigationController]
     let tabarController = UITabBarController()
