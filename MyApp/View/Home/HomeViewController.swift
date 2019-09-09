@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import  MVVM
+import MVVM
 import Realm
 import RealmSwift
 import SVProgressHUD
