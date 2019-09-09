@@ -167,11 +167,4 @@ extension AppDelegate: CLLocationManagerDelegate {
       break
     }
   }
-
-  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    guard let lastLocation = locations.last else { return }
-    print("timestampe \(lastLocation.timestamp)")
-    print("lat \(lastLocation.coordinate.latitude)")
-    print("lng \(lastLocation.coordinate.longitude)")
-  }
 }
