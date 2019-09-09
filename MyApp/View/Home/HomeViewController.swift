@@ -64,6 +64,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
     SVProgressHUD.show()
     self.viewModel.fetchData(searchKey: self.keySearch) { (error) in
       if let error = error {
+        SVProgressHUD.dismiss()
         self.alert(error: error.localizedDescription)
       } else {
         //success

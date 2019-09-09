@@ -42,13 +42,11 @@ extension ApiManager.Snippet {
         if let data = data {
           let json = data.convertToJSON()
           guard let items = json["items"] as? JSArray else {
+            completion(.failure(.error("Item not found")))
             return
           }
           var snippets = [Snippet]()
           for item in items {
-            guard let snippet = item["snippet"] as? JSObject else {
-              return
-            }
             let snip = Snippet(json: item)
             snippets.append(snip)
           }
