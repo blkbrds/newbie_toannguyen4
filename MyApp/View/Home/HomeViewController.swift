@@ -29,6 +29,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.View {
     }
   }
 
+  var favoriteViewModel = FavoriteViewModel()
+
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var searchBar: UISearchBar!
@@ -210,8 +212,26 @@ extension HomeViewController: UITableViewDataSource {
 
     guard let cell = tableView.dequeueReusableCell(withIdentifier: IdentifierNib.youtubeCell) as? YoutubeCell
       else { fatalError() }
+    cell.favoriteButton.addTarget(self, action: #selector(favoriteTapped(_:)), for: .touchUpInside)
+    cell.favoriteButton.tag = indexPath.row
     cell.viewModel = viewModel.viewModelForItem(at: indexPath)
     return cell
+  }
+  
+  @objc func favoriteTapped(_ sender: UIButton)
+  {
+    let indexPath = IndexPath(row: sender.tag, section: SectionTableView.kYoutubeSection.rawValue)
+    let favorite = Favorite()
+    let snippet = viewModel.viewModelForItem(at: indexPath)
+    favorite.videoId = snippet.videoId
+    favorite.publishedAt = snippet.publishedAt
+    favorite.channelId = snippet.channelId
+    favorite.title = snippet.title
+    favorite.des = snippet.des
+    favorite.thumbnails = snippet.thumbnails
+    favorite.channelTitle = snippet.channelTitle
+    favorite.liveBroadcastContent = snippet.liveBroadcastContent
+    favoriteViewModel.addDataFavorite(json: favorite)
   }
 }
 // MARK: - UITableViewDelegate
@@ -257,13 +277,13 @@ extension HomeViewController: UICollectionViewDataSource {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IdentifierNib.headerCollectionCell, for: indexPath) as? HeaderCollectionCell else {
         return UICollectionViewCell()
       }
-
       return cell
     }
 
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IdentifierNib.homeCollectionCell, for: indexPath) as? HomeCollectionCell else {
       return UICollectionViewCell()
     }
+
     cell.viewModel = viewModel.viewModelForItem(at: indexPath)
     return cell
   }

@@ -15,7 +15,7 @@ class YoutubeCell: UITableViewCell, MVVM.View {
   @IBOutlet weak var thumbnailImage: UIImageView!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var chanelLabel: UILabel!
-  @IBOutlet weak var favoriteImage: UIImageView!
+  @IBOutlet weak var favoriteButton: UIButton!
   var viewModel: SnippetCellViewModel? {
     didSet {
       updateView()

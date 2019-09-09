@@ -1,8 +1,8 @@
 //
-//  Snippet.swift
+//  Favorite.swift
 //  MyApp
 //
-//  Created by MBA0103 on 8/28/19.
+//  Created by MBA0103 on 9/9/19.
 //  Copyright © 2019 Asian Tech Co., Ltd. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import RealmSwift
 import ObjectMapper
 import Realm
 
-final class Snippet: Object, Mappable {
+final class Favorite: Object, Mappable {
   required convenience init?(map: Map) {
     self.init()
   }
