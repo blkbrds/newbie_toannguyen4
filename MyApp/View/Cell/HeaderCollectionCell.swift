@@ -25,7 +25,7 @@ final class HeaderCollectionCell: UICollectionViewCell, UIScrollViewDelegate {
   }
 
   func setupScroll() {
-    self.sliderScrollView.frame = CGRect(x: 0, y: 0, width: self.mainView.frame.width, height: self.mainView.frame.height)
+    sliderScrollView.frame = CGRect(x: 0, y: 0, width: mainView.frame.width, height: mainView.frame.height)
     let scrollViewWidth: CGFloat = UIScreen.main.bounds.width
     let scrollViewHeight: CGFloat = 210
 
@@ -37,28 +37,28 @@ final class HeaderCollectionCell: UICollectionViewCell, UIScrollViewDelegate {
     imgThree.image = UIImage(named: ImageSlider.slide3.rawValue)
     let imgFour = UIImageView(frame: CGRect(x: scrollViewWidth * 3, y: 0, width: scrollViewWidth, height: scrollViewHeight))
     imgFour.image = UIImage(named: ImageSlider.slide4.rawValue)
-    self.sliderScrollView.addSubview(imgOne)
-    self.sliderScrollView.addSubview(imgTwo)
-    self.sliderScrollView.addSubview(imgThree)
-    self.sliderScrollView.addSubview(imgFour)
+    sliderScrollView.addSubview(imgOne)
+    sliderScrollView.addSubview(imgTwo)
+    sliderScrollView.addSubview(imgThree)
+    sliderScrollView.addSubview(imgFour)
     //4
-    self.sliderScrollView.contentSize = CGSize(width: self.sliderScrollView.frame.width * 4, height: self.sliderScrollView.frame.height)
-    self.sliderScrollView.delegate = self
-    self.pageControl.currentPage = 0
-    self.mainView.bringSubview(toFront: pageControl)
+    sliderScrollView.contentSize = CGSize(width: sliderScrollView.frame.width * 4, height: sliderScrollView.frame.height)
+    sliderScrollView.delegate = self
+    pageControl.currentPage = 0
+    mainView.bringSubview(toFront: pageControl)
 
     Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
   }
 
   @objc func moveToNextPage () {
-    let pageWidth: CGFloat = self.sliderScrollView.frame.width
+    let pageWidth: CGFloat = sliderScrollView.frame.width
     let maxWidth: CGFloat = pageWidth * 4
-    let contentOffset: CGFloat = self.sliderScrollView.contentOffset.x
+    let contentOffset: CGFloat = sliderScrollView.contentOffset.x
     var slideToX = contentOffset + pageWidth
     if  contentOffset + pageWidth == maxWidth {
       slideToX = 0
     }
-    self.sliderScrollView.scrollRectToVisible(CGRect(x: slideToX, y: 0, width: pageWidth, height: self.sliderScrollView.frame.height), animated: true)
+    sliderScrollView.scrollRectToVisible(CGRect(x: slideToX, y: 0, width: pageWidth, height: sliderScrollView.frame.height), animated: true)
   }
 }
 
@@ -69,7 +69,7 @@ extension SliderScroll {
     let pageWidth: CGFloat = scrollView.frame.width
     let currentPage: CGFloat = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1
     // Change the indicator
-    self.pageControl.currentPage = Int(currentPage)
+    pageControl.currentPage = Int(currentPage)
     // Change the text accordingly
   }
 }
