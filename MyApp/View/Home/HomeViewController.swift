@@ -219,6 +219,7 @@ extension HomeViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       print(viewModel.viewModelForItem(at: indexPath).title)
   }
+  
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.section == SectionTableView.kHeaderSection.rawValue {
       return App.SizeHomeTableViewCell.kHeightHeaderSection
@@ -231,6 +232,7 @@ extension HomeViewController: UITableViewDelegate {
     if indexPath.section == SectionTableView.kYoutubeSection.rawValue {
       let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
         //delete here
+
       })
       return [deleteAction]
     }

@@ -18,8 +18,6 @@ final class SnippetCellViewModel: MVVM.ViewModel {
   let thumbnails: String
   let channelTitle: String
   let liveBroadcastContent: String
-  let videoId: String
-  let isFavorite: String
 
   init(snippet: Snippet) {
     publishedAt = snippet.publishedAt
@@ -29,7 +27,5 @@ final class SnippetCellViewModel: MVVM.ViewModel {
     thumbnails = snippet.thumbnails
     channelTitle = snippet.channelTitle
     liveBroadcastContent = snippet.liveBroadcastContent
-    videoId = snippet.videoId
-    isFavorite = snippet.isFavorite
   }
 }

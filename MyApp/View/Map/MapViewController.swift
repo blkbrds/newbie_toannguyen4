@@ -33,15 +33,9 @@ class MapViewController: UIViewController {
     view.addSubview(mapView)
 
     // Setting the Visible Portion of the Map
-    let center = CLLocationCoordinate2D(latitude: 16.078906, longitude: 108.232525) // This is coordinate of Hai Chau district of Da Nang city
+    let center = CLLocationCoordinate2D(latitude: 16.078906, longitude: 108.232525)
     let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
     mapView.region = MKCoordinateRegion(center: center, span: span)
-
-    // Display 3D map
-    /*
-     let eyeCoordinate = CLLocationCoordinate2D(latitude: 16.05, longitude: 108.17)
-     mapView.camera = MKMapCamera(lookingAtCenter: center, fromEyeCoordinate: eyeCoordinate, eyeAltitude: 1000)
-     */
 
     // Show user location
     mapView.showsUserLocation = true

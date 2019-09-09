@@ -49,7 +49,7 @@ extension ApiManager.Snippet {
             guard let snippet = item["snippet"] as? JSObject else {
               return
             }
-            let snip = Snippet(json: item)
+            let snip = Snippet(json: snippet)
             snippets.append(snip)
           }
           guard let nextPageToken = json["nextPageToken"] as? String else {

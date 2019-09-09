@@ -13,8 +13,6 @@ import MVVM
 import SwiftyJSON
 
 class SnippetListViewModel: MVVM.ViewModel {
-  private var snippets: Results<Snippet>?
-  private var token: NotificationToken?
 
   weak var delegate: ViewModelDelegate?
   private var snippetList: [Snippet] = []
@@ -47,7 +45,7 @@ class SnippetListViewModel: MVVM.ViewModel {
     //self.snippetList.removeAll()
     let params = ApiManager.Snippet.QueryParams(
       pageToken: pageToken,
-      maxResults: 3,
+      maxResults: 30,
       keyID: ApiManager.Key.keyID
     )
     ApiManager.Snippet.getSnippet(searchKey: searchKey, params: params) { (result) in
@@ -61,7 +59,8 @@ class SnippetListViewModel: MVVM.ViewModel {
           self.snippetList.append(snippet)
         }
 
-       self.insertDataToRealm(json: snippetResult.snippets.toJSON())
+        self.insertDataToRealm(json: snippetResult.snippets.toJSON())
+
         self.pageToken = snippetResult.pageNextToken
         completion(nil)
       }
@@ -76,7 +75,6 @@ class SnippetListViewModel: MVVM.ViewModel {
         try realm.write {
           realm.deleteAll()
           for item in json {
-            print(item)
             let snip = Snippet(json: item)
             realm.add(snip)
           }
