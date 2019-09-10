@@ -66,6 +66,7 @@ final class HeaderCell: UITableViewCell, UIScrollViewDelegate {
 private typealias SliderScroll = HeaderCell
 
 extension SliderScroll {
+  
   func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
     // Test the offset and calculate the current page after scrolling ends
     let pageWidth: CGFloat = scrollView.frame.width
