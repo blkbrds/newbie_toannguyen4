@@ -31,6 +31,7 @@ final class FavoriteViewController: UIViewController {
     tableView.register(UINib(nibName: IdentifierNib.youtubeCell, bundle: nil), forCellReuseIdentifier: IdentifierNib.youtubeCell)
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = App.SizeHomeTableViewCell.kHeightCellSection
+    tableView.tableFooterView = UIView()
     tableView.reloadData()
   }
 
@@ -76,5 +77,17 @@ extension FavoriteViewController: UITableViewDataSource {
 extension FavoriteViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return App.SizeHomeTableViewCell.kHeightCellSection
+  }
+  func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    // 1
+
+    let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+      //delete here
+      let favoriteId = self.favoriteViewModel.viewModelForItems(at: indexPath).videoId
+      if self.favoriteViewModel.isExistFavoriteItem(videoId: favoriteId) {
+          self.favoriteViewModel.deleteDataFavorite(id: favoriteId)
+      }
+    })
+    return [deleteAction]
   }
 }
