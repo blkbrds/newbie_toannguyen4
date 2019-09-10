@@ -28,7 +28,7 @@ target 'MyApp' do
     pod 'SVProgressHUD'
     # Utils
     #pod 'SwiftLint', '0.25.0'
-    #pod 'SwiftLint'
+    pod 'SwiftLint'
     pod 'SwiftUtils', '4.0.1' # Swift shorthand.
     pod 'SwiftDate', '4.5.0' # The best way to manage Dates and Timezones in Swift.
 

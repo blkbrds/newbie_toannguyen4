@@ -17,6 +17,7 @@ PODS:
   - SDWebImage/Core (5.1.0)
   - SVProgressHUD (2.2.5)
   - SwiftDate (4.5.0)
+  - SwiftLint (0.34.0)
   - SwiftUtils (4.0.1)
   - SwiftyJSON (4.3.0)
 
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - SDWebImage (~> 5.0)
   - SVProgressHUD
   - SwiftDate (= 4.5.0)
+  - SwiftLint
   - SwiftUtils (= 4.0.1)
   - SwiftyJSON (~> 4.0)
 
@@ -47,6 +49,7 @@ SPEC REPOS:
     - SDWebImage
     - SVProgressHUD
     - SwiftDate
+    - SwiftLint
     - SwiftUtils
     - SwiftyJSON
 
@@ -62,9 +65,10 @@ SPEC CHECKSUMS:
   SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftDate: 17dd829c004a2d60432ef63ffcdb26ca2eb97a60
+  SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
   SwiftUtils: b009d391fb2e285392f114238f8b55d2750b80f0
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 64204a9be0e0b137b745729dd90290b6868c0c56
+PODFILE CHECKSUM: dfa22c8c3496ab1972f71936dac41b47d64db4f8
 
 COCOAPODS: 1.7.5
