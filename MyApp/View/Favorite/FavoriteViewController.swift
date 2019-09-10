@@ -32,7 +32,6 @@ final class FavoriteViewController: UIViewController {
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = App.SizeHomeTableViewCell.kHeightCellSection
     tableView.tableFooterView = UIView()
-    tableView.reloadData()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +79,6 @@ extension FavoriteViewController: UITableViewDelegate {
   }
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     // 1
-
     let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
       //delete here
       let favoriteId = self.favoriteViewModel.viewModelForItems(at: indexPath).videoId

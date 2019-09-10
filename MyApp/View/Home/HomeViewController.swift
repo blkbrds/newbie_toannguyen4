@@ -63,7 +63,7 @@ final class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.Vie
     SVProgressHUD.dismiss()
   }
 
-  func loadData() {
+  private func loadData() {
     SVProgressHUD.show()
     self.viewModel.fetchData(searchKey: self.keySearch) { (error) in
       if let error = error {
@@ -77,7 +77,7 @@ final class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.Vie
     }
   }
 
-  func updateView() {
+  private func updateView() {
     guard isViewLoaded else { return }
     if !isDisplayTable {
       tableView.reloadData()
@@ -87,7 +87,7 @@ final class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.Vie
     viewDidUpdated()
   }
 
-  func setupTitleNavi() {
+  private func setupTitleNavi() {
     self.navigationItem.title = "Home"
   }
 
@@ -107,7 +107,6 @@ final class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.Vie
     tableView.dataSource = self
     tableView.delegate = self
     tableView.tableFooterView = UIView()
-    tableView.reloadData()
     searchBar.delegate = self
 
     //register collectionView
@@ -118,7 +117,7 @@ final class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.Vie
     collectionView.reloadData()
   }
 
-  func setupRightNavigationItem() {
+  private func setupRightNavigationItem() {
     let rightIcon = UIButton(type: .custom)
 
     switch isDisplayTable {
@@ -135,7 +134,7 @@ final class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.Vie
     self.navigationItem.rightBarButtonItem = barButtonItem
   }
 
-  public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+  private func scrollViewDidScroll(_ scrollView: UIScrollView) {
     if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 0 {
       self.heightSearchBar.constant = App.SizeSearchBar.kHeightShowSearchBar
     } else {
