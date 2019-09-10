@@ -20,7 +20,7 @@ struct ApiManager {
   }
 
   struct Key {
-    static let keyID = "AIzaSyDEtueh3IU6y6YdHeqwIO3dVLp5hBWWNGU"
+    static let keyID = "AIzaSyBK92D7-hdwRoJwNysrcGgqfrwKne7AR3o"
   }
 
   struct Snippet {}

@@ -51,8 +51,6 @@ final class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.Vie
     setupTitleNavi()
     viewModel.delegate = self
     loadData()
-   //
-    //viewModel.fetch()
     // Refresh control add in tableview.
     refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
     refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -108,6 +106,7 @@ final class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.Vie
     tableView.estimatedRowHeight = App.SizeHomeTableViewCell.kHeightCellSection
     tableView.dataSource = self
     tableView.delegate = self
+    tableView.tableFooterView = UIView()
     tableView.reloadData()
     searchBar.delegate = self
 
@@ -242,8 +241,10 @@ extension HomeViewController: UITableViewDataSource {
     } else {
       favoriteViewModel.deleteDataFavorite(id: favorite.videoId)
     }
+    DispatchQueue.main.async {
+      self.tableView.reloadRows(at: [indexPath], with: .none)
+    }
 
-    updateView()
   }
 }
 // MARK: - UITableViewDelegate
