@@ -2,7 +2,7 @@
 //  Data.swift
 //  MyApp
 //
-//  Created by MBA0103 on 8/28/19.
+//  Created by Toan Nguyen D. [4] on 8/28/19.
 //  Copyright © 2019 Asian Tech Co., Ltd. All rights reserved.
 //
 
