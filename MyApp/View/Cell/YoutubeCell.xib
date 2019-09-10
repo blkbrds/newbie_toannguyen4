@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qQ-AY-zbO">
                         <rect key="frame" x="5" y="5" width="321" height="97.5"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youtube" translatesAutoresizingMaskIntoConstraints="NO" id="kgp-d5-z0x">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-youtube" translatesAutoresizingMaskIntoConstraints="NO" id="kgp-d5-z0x">
                                 <rect key="frame" x="10" y="-11.5" width="140" height="120.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="9BG-qw-0jR"/>
@@ -84,6 +84,6 @@
     </objects>
     <resources>
         <image name="ic-favoriteInActive" width="25" height="25"/>
-        <image name="youtube" width="50" height="50"/>
+        <image name="img-youtube" width="50" height="50"/>
     </resources>
 </document>

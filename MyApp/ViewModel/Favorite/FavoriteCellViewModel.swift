@@ -20,14 +20,14 @@ final class FavoriteCellViewModel: MVVM.ViewModel {
   let liveBroadcastContent: String
   let videoId: String
 
-  init(snippet: Snippet) {
-    videoId = snippet.videoId
-    publishedAt = snippet.publishedAt
-    channelId = snippet.channelId
-    title = snippet.title
-    des = snippet.des
-    thumbnails = snippet.thumbnails
-    channelTitle = snippet.channelTitle
-    liveBroadcastContent = snippet.liveBroadcastContent
+  init(favorite: Favorite) {
+    videoId = favorite.videoId
+    publishedAt = favorite.publishedAt
+    channelId = favorite.channelId
+    title = favorite.title
+    des = favorite.des
+    thumbnails = favorite.thumbnails
+    channelTitle = favorite.channelTitle
+    liveBroadcastContent = favorite.liveBroadcastContent
   }
 }

@@ -59,12 +59,15 @@ class SnippetListViewModel: MVVM.ViewModel {
         for snippet in snippetResult.snippets {
           self.snippetList.append(snippet)
         }
-
         self.insertDataToRealm(json: snippetResult.snippets)
         self.pageToken = snippetResult.pageNextToken
         completion(nil)
       }
     }
+  }
+
+  func checkValidatePrimaryKey(videoId: String) -> Bool {
+    return try! Realm().object(ofType: Snippet.self, forPrimaryKey: videoId) != nil
   }
 
   func insertDataToRealm(json: [Snippet]) {
@@ -73,9 +76,12 @@ class SnippetListViewModel: MVVM.ViewModel {
       do {
         let realm = try Realm()
         try realm.write {
-          realm.deleteAll()
+          let items = realm.objects(Snippet.self)
+          realm.delete(items)
           for item in json {
-            realm.add(item)
+            if !self.checkValidatePrimaryKey(videoId: item.videoId) {
+                realm.add(item)
+            }
           }
         }
       } catch {

@@ -23,6 +23,11 @@ final class HomeViewController: UIViewController, UIScrollViewDelegate, MVVM.Vie
     case collection = "ic-collection"
   }
 
+  enum IconFavorite: String {
+    case active = "ic-favoriteActive"
+    case inActive = "ic-favoriteInActive"
+  }
+
   var viewModel = SnippetListViewModel() {
     didSet {
       updateView()
@@ -232,7 +237,13 @@ extension HomeViewController: UITableViewDataSource {
     favorite.thumbnails = snippet.thumbnails
     favorite.channelTitle = snippet.channelTitle
     favorite.liveBroadcastContent = snippet.liveBroadcastContent
-    favoriteViewModel.addDataFavorite(json: favorite)
+    if !favoriteViewModel.isExistFavoriteItem(videoId: snippet.videoId) {
+      favoriteViewModel.addDataFavorite(json: favorite)
+    } else {
+      favoriteViewModel.deleteDataFavorite(id: favorite.videoId)
+    }
+
+    updateView()
   }
 }
 // MARK: - UITableViewDelegate
