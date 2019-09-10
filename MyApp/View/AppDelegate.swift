@@ -143,7 +143,7 @@ extension AppDelegate {
   }
 
   // Standard location service
-  func startStandardLocationService() {
+  private func startStandardLocationService() {
     locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
     locationManager.distanceFilter = 50
     locationManager.startUpdatingLocation()
