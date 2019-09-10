@@ -12,7 +12,7 @@ import SDWebImage
 import SwiftDate
 import CoreImage
 
-class HomeCollectionCell: UICollectionViewCell, MVVM.View {
+final class HomeCollectionCell: UICollectionViewCell, MVVM.View {
 
   @IBOutlet weak var thumbnailImage: ImageView!
   @IBOutlet weak var titleLabel: Label!
