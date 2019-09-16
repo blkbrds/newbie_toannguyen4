@@ -63,7 +63,7 @@ class FavoriteViewModel: MVVM.ViewModel {
     })
   }
 
-  func addDataFavorite(json: Favorite, completion: @escaping (RealmResult) -> Void) {
+  func addDataFavorite(json: Favorite, completion: @escaping (RealmError?) -> Void) {
     //insert data to realm
     DispatchQueue.main.async {
       do {
@@ -72,12 +72,12 @@ class FavoriteViewModel: MVVM.ViewModel {
             realm.add(json)
         }
       } catch {
-        completion(.failure(self.realmError))
+        completion(.error(self.realmError))
       }
     }
   }
 
-  func deleteDataFavorite(id: String, completion: @escaping (RealmResult) -> Void) {
+  func deleteDataFavorite(id: String, completion: @escaping (RealmError?) -> Void) {
     //insert data to realm
     DispatchQueue.main.async {
       do {
@@ -88,7 +88,7 @@ class FavoriteViewModel: MVVM.ViewModel {
           }
         }
       } catch {
-        completion(.failure(self.realmError))
+        completion(.error(self.realmError))
       }
     }
   }

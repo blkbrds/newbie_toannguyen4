@@ -23,9 +23,18 @@ enum APIResult {
 }
 
 //define error with realm
-enum RealmResult {
-  case success
-  case failure(String)
+enum RealmError {
+  case error(String)
+  case errorWriteReal
+
+  var localizedDescription: String {
+    switch self {
+    case .error(let string):
+      return string
+    case .errorWriteReal:
+      return "Can't open realm"
+    }
+  }
 }
 
 struct API {

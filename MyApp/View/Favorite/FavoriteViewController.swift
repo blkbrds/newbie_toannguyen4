@@ -83,7 +83,11 @@ extension FavoriteViewController: UITableViewDelegate {
       //delete here
       let favoriteId = self.favoriteViewModel.viewModelForItems(at: indexPath).videoId
       if self.favoriteViewModel.isExistFavoriteItem(videoId: favoriteId) {
-          self.favoriteViewModel.deleteDataFavorite(id: favoriteId)
+        self.favoriteViewModel.deleteDataFavorite(id: favoriteId, completion: { (error) in
+          if let err = error {
+            self.alert(error: err.localizedDescription)
+          }
+        })
       }
     })
     return [deleteAction]

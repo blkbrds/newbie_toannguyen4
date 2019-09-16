@@ -17,6 +17,7 @@ class SnippetListViewModel: MVVM.ViewModel {
   weak var delegate: ViewModelDelegate?
   private var snippetList: [Snippet] = []
   private let maximumResults: Int = 30
+  private let realmError: String = "Error when write Realm"
   var pageToken: String = ""
 
   func numberOfSections() -> Int {
@@ -59,7 +60,7 @@ class SnippetListViewModel: MVVM.ViewModel {
         for snippet in snippetResult.snippets {
           self.snippetList.append(snippet)
         }
-        self.insertDataToRealm(json: snippetResult.snippets)
+        self.insertDataToRealm(json: snippetResult.snippets,  completion: { (result) in })
         self.pageToken = snippetResult.pageNextToken
         completion(nil)
       }
@@ -74,7 +75,7 @@ class SnippetListViewModel: MVVM.ViewModel {
     }
   }
 
-  func insertDataToRealm(json: [Snippet]) {
+  func insertDataToRealm(json: [Snippet], completion: @escaping (RealmError?) -> Void) {
     //insert data to realm
     DispatchQueue.main.async {
       do {
@@ -89,7 +90,7 @@ class SnippetListViewModel: MVVM.ViewModel {
           }
         }
       } catch {
-        print("Error with Realm")
+        completion(.error(self.realmError))
       }
     }
   }
