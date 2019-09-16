@@ -22,6 +22,12 @@ enum APIResult {
   case failure(APIError)
 }
 
+//define error with realm
+enum RealmResult {
+  case success
+  case failure(String)
+}
+
 struct API {
   //singleton
   private static var shareAPI: API = {
