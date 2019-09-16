@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HeaderCollectionCell" customModule="MyApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="413" height="159"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="413" height="159"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7zx-9M-Lmg">
+                        <rect key="frame" x="0.0" y="0.0" width="413" height="159"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cla-1i-nnb">
+                                <rect key="frame" x="0.0" y="0.0" width="413" height="159"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="P2R-nJ-btP">
+                                        <rect key="frame" x="131.5" y="112" width="150" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="NxI-N2-J6F"/>
+                                        </constraints>
+                                    </pageControl>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vny-OX-bbX">
+                                        <rect key="frame" x="0.0" y="0.0" width="413" height="159"/>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="P2R-nJ-btP" secondAttribute="bottom" constant="10" id="BZ9-PX-Xrg"/>
+                                    <constraint firstItem="vny-OX-bbX" firstAttribute="leading" secondItem="Cla-1i-nnb" secondAttribute="leading" id="f29-AW-uda"/>
+                                    <constraint firstAttribute="trailing" secondItem="vny-OX-bbX" secondAttribute="trailing" id="fZQ-D9-hvx"/>
+                                    <constraint firstItem="vny-OX-bbX" firstAttribute="top" secondItem="Cla-1i-nnb" secondAttribute="top" id="jjL-sy-Fwe"/>
+                                    <constraint firstAttribute="bottom" secondItem="vny-OX-bbX" secondAttribute="bottom" id="mo3-NZ-IoM"/>
+                                    <constraint firstItem="P2R-nJ-btP" firstAttribute="centerX" secondItem="Cla-1i-nnb" secondAttribute="centerX" id="mxU-bm-R6p"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Cla-1i-nnb" secondAttribute="trailing" id="X3K-bB-ldX"/>
+                            <constraint firstItem="Cla-1i-nnb" firstAttribute="leading" secondItem="7zx-9M-Lmg" secondAttribute="leading" id="qDm-85-Q8F"/>
+                            <constraint firstAttribute="bottom" secondItem="Cla-1i-nnb" secondAttribute="bottom" id="wjZ-h1-D3m"/>
+                            <constraint firstItem="Cla-1i-nnb" firstAttribute="top" secondItem="7zx-9M-Lmg" secondAttribute="top" id="zsd-GW-BUS"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="7zx-9M-Lmg" secondAttribute="bottom" id="5qY-2Y-yuy"/>
+                <constraint firstAttribute="trailing" secondItem="7zx-9M-Lmg" secondAttribute="trailing" id="hJC-1H-tFQ"/>
+                <constraint firstItem="7zx-9M-Lmg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vVU-zE-Y33"/>
+                <constraint firstItem="7zx-9M-Lmg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="vjY-Fn-0GJ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="413" height="159"/>
+            <connections>
+                <outlet property="mainView" destination="Cla-1i-nnb" id="gpV-FW-nBi"/>
+                <outlet property="pageControl" destination="P2R-nJ-btP" id="9lH-ab-dZH"/>
+                <outlet property="sliderScrollView" destination="vny-OX-bbX" id="wPP-2c-WQa"/>
+            </connections>
+            <point key="canvasLocation" x="181.8840579710145" y="55.245535714285715"/>
+        </collectionViewCell>
+    </objects>
+</document>

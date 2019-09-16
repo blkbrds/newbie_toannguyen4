@@ -10,8 +10,8 @@ import UIKit
 import SwiftUtils
 
 extension UIViewController {
-    func alert(error: Error) {
-        alert(title: "ERROR", msg: error.localizedDescription, buttons: ["OK"], handler: nil)
+    func alert(error: String) {
+        alert(title: "ERROR", msg: error, buttons: ["OK"], handler: nil)
     }
 
     func alert(title: String? = nil, msg: String, buttons: [String], handler: ((UIAlertAction) -> Void)?) {

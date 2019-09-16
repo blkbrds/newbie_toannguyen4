@@ -9,37 +9,53 @@
 import Alamofire
 import Foundation
 
-extension ApiManager {
-    @discardableResult
-    func request(method: HTTPMethod,
-                 urlString: URLStringConvertible,
-                 parameters: [String: Any]? = nil,
-                 headers: [String: String]? = nil,
-                 completion: Completion?) -> Request? {
-        guard Network.shared.isReachable else {
-            completion?(.failure(Api.Error.network))
-            return nil
-        }
-
-        let encoding: ParameterEncoding
-        if method == .post {
-            encoding = JSONEncoding.default
-        } else {
-            encoding = URLEncoding.default
-        }
-
-        var headers = api.defaultHTTPHeaders
-        headers.updateValues(headers)
-
-        let request = Alamofire.request(urlString.urlString,
-                                        method: method,
-                                        parameters: parameters,
-                                        encoding: encoding,
-                                        headers: headers
-        ).responseJSON(completion: { (response) in
-            completion?(response.result)
-        })
-
-        return request
+extension API {
+  func request(urlString: String, completion: @escaping (APIResult) -> Void) {
+    guard let url = URL(string: urlString) else {
+      completion(.failure(.errorURL))
+      return
     }
+
+    let config = URLSessionConfiguration.ephemeral
+    if #available(iOS 11.0, *) {
+      config.waitsForConnectivity = true
+    } else {
+      // Fallback on earlier versions
+    }
+    let session = URLSession.shared
+    let dataTask = session.dataTask(with: url) { (data, _, error) in
+      DispatchQueue.main.async {
+        if let error = error {
+          completion(.failure(.error(error.localizedDescription)))
+        } else {
+          if let data = data {
+            completion(.success(data))
+          }
+        }
+      }
+    }
+    dataTask.resume()
+  }
+
+  func request(url: URL, completion: @escaping (APIResult) -> Void) {
+    let config = URLSessionConfiguration.ephemeral
+    if #available(iOS 11.0, *) {
+      config.waitsForConnectivity = true
+    } else {
+      // Fallback on earlier versions
+    }
+    let session = URLSession.shared
+    let dataTask = session.dataTask(with: url) { (data, _, error) in
+      DispatchQueue.main.async {
+        if let error = error {
+          completion(.failure(.error(error.localizedDescription)))
+        } else {
+          if let data = data {
+            completion(.success(data))
+          }
+        }
+      }
+    }
+    dataTask.resume()
+  }
 }

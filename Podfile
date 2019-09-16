@@ -11,7 +11,8 @@ target 'MyApp' do
 
     # Architect
     pod 'MVVM-Swift', '1.1.0' # MVVM Architect for iOS Application.
-
+    pod 'RealmSwift'
+    pod 'SwiftyJSON', '~> 4.0'
     # UI
     # pod 'SVProgressHUD', '2.2.5' # A clean and lightweight progress HUD for your iOS and tvOS app.
     # pod 'IQKeyboardManagerSwift', '5.0.7' # Codeless drop-in universal library allows to prevent issues of keyboard sliding up and cover UITextField/UITextView. Neither need to write any code nor any setup required and much more.
@@ -20,13 +21,14 @@ target 'MyApp' do
     # Data
     pod 'ObjectMapper', '~> 3.4' # Simple JSON Object mapping written in Swift. Please fix this version to 2.2.6 now.
     # pod 'SwiftyJSON', '4.0.0' # The better way to deal with JSON data in Swift.
-
     # Network
     pod 'Alamofire', '4.6.0' # Elegant HTTP Networking in Swift.
     pod 'AlamofireNetworkActivityIndicator', '2.2.0' # Controls the visibility of the network activity indicator on iOS using Alamofire.
-
+    pod 'SDWebImage', '~> 5.0'
+    pod 'SVProgressHUD'
     # Utils
-    pod 'SwiftLint', '0.25.0' # A tool to enforce Swift style and conventions.
+    #pod 'SwiftLint', '0.25.0'
+    pod 'SwiftLint'
     pod 'SwiftUtils', '4.0.1' # Swift shorthand.
     pod 'SwiftDate', '4.5.0' # The best way to manage Dates and Timezones in Swift.
 

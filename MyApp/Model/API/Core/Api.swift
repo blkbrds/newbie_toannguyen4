@@ -1,49 +1,53 @@
-//
-//  Api.swift
-//  MyApp
-//
-//  Created by iOSTeam on 2/21/18.
-//  Copyright © 2018 Asian Tech Co., Ltd. All rights reserved.
-//
-
 import Foundation
 
-final class Api {
-    struct Path {
-        #if DEBUG
-            static let baseURL = "https://dev-asiantech.vn"
-        #elseif STG
-            static let baseURL = "https://stg-asiantech.vn"
-        #else
-            static let baseURL = "https://pro-asiantech.vn"
-        #endif
+// Defines
+enum APIError: Error {
+  case error(String)
+  case errorURL
+
+  var localizedDescription: String {
+    switch self {
+    case .error(let string):
+      return string
+    case .errorURL:
+      return "URL String is error."
     }
+  }
 }
 
-protocol URLStringConvertible {
-    var urlString: String { get }
+typealias APICompletion<T> = (Result<T, APIError>) -> Void
+
+enum APIResult {
+  case success(Data?)
+  case failure(APIError)
 }
 
-protocol ApiPath: URLStringConvertible {
-    static var path: String { get }
+//define error with realm
+enum RealmError {
+  case error(String)
+  case errorWriteReal
+
+  var localizedDescription: String {
+    switch self {
+    case .error(let string):
+      return string
+    case .errorWriteReal:
+      return "Can't open realm"
+    }
+  }
 }
 
-extension URL: URLStringConvertible {
-    var urlString: String { return absoluteString }
-}
+struct API {
+  //singleton
+  private static var shareAPI: API = {
+    let shareAPI = API()
+    return shareAPI
+  }()
 
-extension Int: URLStringConvertible {
-    var urlString: String { return String(describing: self) }
-}
+  static func shared() -> API {
+    return shareAPI
+  }
 
-private func / (lhs: URLStringConvertible, rhs: URLStringConvertible) -> String {
-    return lhs.urlString + "/" + rhs.urlString
-}
-
-extension String: URLStringConvertible {
-    var urlString: String { return self }
-}
-
-extension CustomStringConvertible where Self: URLStringConvertible {
-    var urlString: String { return description }
+  //init
+  private init() {}
 }

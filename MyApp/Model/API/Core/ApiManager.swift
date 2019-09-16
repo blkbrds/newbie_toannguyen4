@@ -12,14 +12,17 @@ import Alamofire
 typealias JSObject = [String: Any]
 typealias JSArray = [JSObject]
 
-typealias Completion = (Result<Any>) -> Void
 
-let api = ApiManager()
+struct ApiManager {
+  struct Path {
+    static let baseURL = "https://www.googleapis.com/youtube"
+    static let search = "/v3/search?"
+  }
 
-final class ApiManager {
+  struct Key {
+    static let keyID = "AIzaSyBK92D7-hdwRoJwNysrcGgqfrwKne7AR3o"
+  }
 
-    var defaultHTTPHeaders: [String: String] {
-        let headers: [String: String] = [:]
-        return headers
-    }
+  struct Snippet {}
+
 }

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="YoutubeCell" rowHeight="108" id="KGk-i7-Jjw" customClass="YoutubeCell" customModule="MyApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="331" height="108"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="331" height="107.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qQ-AY-zbO">
+                        <rect key="frame" x="5" y="5" width="321" height="97.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-youtube" translatesAutoresizingMaskIntoConstraints="NO" id="kgp-d5-z0x">
+                                <rect key="frame" x="10" y="-11.5" width="140" height="120.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="9BG-qw-0jR"/>
+                                    <constraint firstAttribute="height" constant="120" id="ex6-9s-NYr"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdg-XA-vz2">
+                                <rect key="frame" x="160" y="10" width="116" height="60"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chanel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Gu-w0-hWg">
+                                <rect key="frame" x="160" y="75" width="131" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yX9-Zy-AiK">
+                                <rect key="frame" x="286" y="10" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="FSm-vc-HL5"/>
+                                    <constraint firstAttribute="height" constant="25" id="mJJ-7u-zQt"/>
+                                </constraints>
+                                <state key="normal" image="ic-favoriteInActive"/>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="gdg-XA-vz2" firstAttribute="leading" secondItem="kgp-d5-z0x" secondAttribute="trailing" constant="10" id="2b0-s3-niu"/>
+                            <constraint firstItem="yX9-Zy-AiK" firstAttribute="top" secondItem="4qQ-AY-zbO" secondAttribute="top" constant="10" id="7if-4B-y2f"/>
+                            <constraint firstItem="kgp-d5-z0x" firstAttribute="leading" secondItem="4qQ-AY-zbO" secondAttribute="leading" constant="10" id="DXf-tg-jT4"/>
+                            <constraint firstAttribute="trailing" secondItem="7Gu-w0-hWg" secondAttribute="trailing" constant="30" id="Jfm-4L-ybV"/>
+                            <constraint firstItem="gdg-XA-vz2" firstAttribute="height" secondItem="kgp-d5-z0x" secondAttribute="height" multiplier="1/2" id="Pvc-QW-vgp"/>
+                            <constraint firstAttribute="trailing" secondItem="yX9-Zy-AiK" secondAttribute="trailing" constant="10" id="Q3K-Ys-c8r"/>
+                            <constraint firstItem="7Gu-w0-hWg" firstAttribute="leading" secondItem="kgp-d5-z0x" secondAttribute="trailing" constant="10" id="gKy-jM-hTz"/>
+                            <constraint firstItem="kgp-d5-z0x" firstAttribute="centerY" secondItem="4qQ-AY-zbO" secondAttribute="centerY" id="gnz-ll-8Fv"/>
+                            <constraint firstItem="7Gu-w0-hWg" firstAttribute="top" secondItem="gdg-XA-vz2" secondAttribute="bottom" constant="5" id="ibe-ct-g7h"/>
+                            <constraint firstItem="gdg-XA-vz2" firstAttribute="top" secondItem="4qQ-AY-zbO" secondAttribute="top" constant="10" id="tAu-MW-Y0K"/>
+                            <constraint firstItem="yX9-Zy-AiK" firstAttribute="leading" secondItem="gdg-XA-vz2" secondAttribute="trailing" constant="10" id="zim-xO-vef"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="4qQ-AY-zbO" secondAttribute="bottom" constant="5" id="CwC-kg-Dff"/>
+                    <constraint firstItem="4qQ-AY-zbO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="IrK-Rl-E3n"/>
+                    <constraint firstAttribute="trailing" secondItem="4qQ-AY-zbO" secondAttribute="trailing" constant="5" id="JdG-9f-sV2"/>
+                    <constraint firstItem="4qQ-AY-zbO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="LyC-bs-3Dv"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="chanelLabel" destination="7Gu-w0-hWg" id="AvJ-2f-OAW"/>
+                <outlet property="favoriteButton" destination="yX9-Zy-AiK" id="35d-p5-Jti"/>
+                <outlet property="thumbnailImage" destination="kgp-d5-z0x" id="r3A-Ou-plu"/>
+                <outlet property="titleLabel" destination="gdg-XA-vz2" id="Al1-Jg-D2y"/>
+            </connections>
+            <point key="canvasLocation" x="145.6521739130435" y="117.85714285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic-favoriteInActive" width="25" height="25"/>
+        <image name="img-youtube" width="50" height="50"/>
+    </resources>
+</document>

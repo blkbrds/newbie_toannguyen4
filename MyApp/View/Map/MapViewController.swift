@@ -1,0 +1,88 @@
+//
+//  MapViewController.swift
+//  MyApp
+//
+//  Created by Toan Nguyen D. [4] on 8/28/19.
+//  Copyright © 2019 Asian Tech Co., Ltd. All rights reserved.
+//
+
+import UIKit
+import MapKit
+
+final class MapViewController: UIViewController {
+
+  weak var mapView: MapView!
+  private let anotationTitle = "Point Annotation"
+  private let anotationSubtitle = "Point annotation information"
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    title = "Map"
+    configLocationServices()
+    configMapView()
+    addAnnotation()
+    addOverlayData()
+  }
+
+  func configLocationServices() {
+    AppDelegate.shared.configLocationService()
+  }
+
+  func configMapView() {
+    // Add map view
+    let mapView = MapView(frame: UIScreen.main.bounds)
+    self.mapView = mapView
+    view.addSubview(mapView)
+
+    // Setting the Visible Portion of the Map
+    let center = CLLocationCoordinate2D(latitude: 16.078906, longitude: 108.232525)
+    let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+    mapView.region = MKCoordinateRegion(center: center, span: span)
+
+    // Show user location
+    mapView.showsUserLocation = true
+
+    // Using delegate of map view to response user interactions
+    mapView.delegate = self
+  }
+
+  func addAnnotation() {
+    let annotation = MKPointAnnotation()
+    annotation.coordinate = CLLocationCoordinate2D(latitude: 16.044, longitude: 108.172)
+    annotation.title = anotationTitle
+    annotation.subtitle = anotationSubtitle
+    mapView.addAnnotation(annotation)
+  }
+
+  func addOverlayData() {
+    let coordinates = [CLLocationCoordinate2D(latitude: 16.078906, longitude: 108.232525)]
+    for center in coordinates {
+      let radius = 10.0 // Distance unit: meters
+      let overlayData = MKCircle(center: center, radius: radius)
+      mapView.add(overlayData)
+    }
+  }
+}
+
+extension MapViewController: MKMapViewDelegate {
+  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    let pin = MKPinAnnotationView(annotation: annotation,
+                                  reuseIdentifier: "MKPinAnnotationView")
+    pin.animatesDrop = true
+    pin.pinTintColor = .green
+    pin.canShowCallout = true
+    pin.leftCalloutAccessoryView = UIImageView(image: nil)
+    pin.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+    return pin
+  }
+
+  func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    guard let circle = overlay as? MKCircle else { return MKOverlayRenderer() }
+    let circleRenderer = MKCircleRenderer(circle: circle)
+    circleRenderer.fillColor = App.Color.mapFillColor
+    circleRenderer.strokeColor = App.Color.mapStrokeColor
+    circleRenderer.lineWidth = App.SizeMap.lineWidth
+    circleRenderer.lineDashPhase = App.SizeMap.lineDashPhase
+    return circleRenderer
+  }
+}
