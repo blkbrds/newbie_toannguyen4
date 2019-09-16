@@ -43,7 +43,7 @@ class SnippetListViewModel: MVVM.ViewModel {
   // MARK: - Action
 
   func fetchData(searchKey: String, completion: @escaping (APIError?) -> Void) {
-    //self.snippetList.removeAll()
+
     let params = ApiManager.Snippet.QueryParams(
       pageToken: pageToken,
       maxResults: maximumResults,
@@ -67,7 +67,11 @@ class SnippetListViewModel: MVVM.ViewModel {
   }
 
   func checkValidatePrimaryKey(videoId: String) -> Bool {
-    return try! Realm().object(ofType: Snippet.self, forPrimaryKey: videoId) != nil
+    do {
+      return try Realm().object(ofType: Snippet.self, forPrimaryKey: videoId) != nil
+    } catch {
+      return false
+    }
   }
 
   func insertDataToRealm(json: [Snippet]) {

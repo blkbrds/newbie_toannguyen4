@@ -36,7 +36,7 @@ final class FavoriteViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    itemsToken = favoriteViewModel.fetchAllFavorite().observe { [weak tableView] changes in
+    itemsToken = favoriteViewModel.fetchDataFavorite()?.observe { [weak tableView] changes in
       guard let tableView = tableView else { return }
 
       switch changes {

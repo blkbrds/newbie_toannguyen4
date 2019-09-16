@@ -9,11 +9,16 @@
 import Foundation
 
 extension Data {
-  func convertToJSON() -> [String: Any] {
+  func convertToJSON() -> [String: Any]? {
     var json: [String: Any] = [:]
-    if let jsonObj = try! JSONSerialization.jsonObject(with: self, options: .mutableContainers) as? [String: Any] {
-      json = jsonObj
+    do {
+      if let jsonObject = try JSONSerialization.jsonObject(with: self, options: .mutableContainers) as? [String: Any] {
+        json = jsonObject
+      }
+    } catch {
+      json = [:]
     }
+
     return json
   }
 

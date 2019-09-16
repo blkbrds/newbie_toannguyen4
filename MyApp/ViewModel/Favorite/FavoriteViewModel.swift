@@ -17,6 +17,7 @@ class FavoriteViewModel: MVVM.ViewModel {
   weak var delegate: ViewModelDelegate?
   private var favorites: Results<Favorite>?
   private var token: NotificationToken?
+  private let realmError: String = "Error when write Realm"
 
   func numberOfSections() -> Int {
     guard let _ = favorites else {
@@ -40,21 +41,29 @@ class FavoriteViewModel: MVVM.ViewModel {
     return FavoriteCellViewModel(favorite: favorite)
   }
 
-  func fetchAllFavorite(in realm: Realm = try! Realm()) -> Results<Favorite> {
-    return realm.objects(Favorite.self)
+  func fetchDataFavorite() -> Results<Favorite>? {
+    do {
+      return try Realm().objects(Favorite.self)
+    } catch {
+      return nil
+    }
   }
 
   // MARK: - Action
   func fetchAllFavorite() {
     guard favorites == nil else { return }
-    favorites = try! Realm().objects(Favorite.self)
+    do {
+      favorites = try Realm().objects(Favorite.self)
+    } catch {
+      favorites = nil
+    }
     token = favorites?.observe({ [weak self] (change) in
       guard let this = self else { return }
       this.notify(change: change)
     })
   }
 
-  func addDataFavorite(json: Favorite) {
+  func addDataFavorite(json: Favorite, completion: @escaping (RealmResult) -> Void) {
     //insert data to realm
     DispatchQueue.main.async {
       do {
@@ -63,27 +72,32 @@ class FavoriteViewModel: MVVM.ViewModel {
             realm.add(json)
         }
       } catch {
-        print("Error with Realm")
+        completion(.failure(self.realmError))
       }
     }
   }
 
-  func deleteDataFavorite(id: String) {
+  func deleteDataFavorite(id: String, completion: @escaping (RealmResult) -> Void) {
     //insert data to realm
     DispatchQueue.main.async {
       do {
         let realm = try Realm()
         try realm.write {
-          realm.delete(try! Realm().object(ofType: Favorite.self, forPrimaryKey: id)!)
+          if let videoId = try Realm().object(ofType: Favorite.self, forPrimaryKey: id) {
+            realm.delete(videoId)
+          }
         }
       } catch {
-        print("Error with Realm")
+        completion(.failure(self.realmError))
       }
     }
   }
 
   func isExistFavoriteItem(videoId: String) -> Bool {
-    return try! Realm().object(ofType: Favorite.self, forPrimaryKey: videoId) != nil
+    do {
+      return try Realm().object(ofType: Favorite.self, forPrimaryKey: videoId) != nil
+    } catch {
+      return false
+    }
   }
 }
-

@@ -41,7 +41,7 @@ extension ApiManager.Snippet {
       case .success(let data):
         if let data = data {
           let json = data.convertToJSON()
-          guard let items = json["items"] as? JSArray else {
+          guard let items = json?["items"] as? JSArray else {
             completion(.failure(.error("Item not found")))
             return
           }
@@ -50,7 +50,7 @@ extension ApiManager.Snippet {
             let snip = Snippet(json: item)
             snippets.append(snip)
           }
-          guard let nextPageToken = json["nextPageToken"] as? String else {
+          guard let nextPageToken = json?["nextPageToken"] as? String else {
             return
           }
           completion(.success(SnippetResult(snippets: snippets, pageNextToken: nextPageToken)))
