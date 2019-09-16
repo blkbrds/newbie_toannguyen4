@@ -12,6 +12,8 @@ import MapKit
 final class MapViewController: UIViewController {
 
   weak var mapView: MapView!
+  private let anotationTitle = "Point Annotation"
+  private let anotationSubtitle = "Point annotation information"
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -19,7 +21,7 @@ final class MapViewController: UIViewController {
     configLocationServices()
     configMapView()
     addAnnotation()
-    // addOverlayData()
+    addOverlayData()
   }
 
   func configLocationServices() {
@@ -47,17 +49,15 @@ final class MapViewController: UIViewController {
   func addAnnotation() {
     let annotation = MKPointAnnotation()
     annotation.coordinate = CLLocationCoordinate2D(latitude: 16.044, longitude: 108.172)
-    annotation.title = "Point Annotation"
-    annotation.subtitle = "Point annotation information"
+    annotation.title = anotationTitle
+    annotation.subtitle = anotationSubtitle
     mapView.addAnnotation(annotation)
   }
 
   func addOverlayData() {
-    let coordinates = [CLLocationCoordinate2D(latitude: 16.0472484, longitude: 108.1716005),
-                       CLLocationCoordinate2D(latitude: 16.0432484, longitude: 108.1736005),
-                       CLLocationCoordinate2D(latitude: 16.0412484, longitude: 108.1776005)]
+    let coordinates = [CLLocationCoordinate2D(latitude: 16.078906, longitude: 108.232525)]
     for center in coordinates {
-      let radius = 1000.0 // Distance unit: meters
+      let radius = 10.0 // Distance unit: meters
       let overlayData = MKCircle(center: center, radius: radius)
       mapView.add(overlayData)
     }
@@ -74,15 +74,6 @@ extension MapViewController: MKMapViewDelegate {
     pin.leftCalloutAccessoryView = UIImageView(image: nil)
     pin.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
     return pin
-  }
-
-  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    print("Did select")
-  }
-
-  func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
-               calloutAccessoryControlTapped control: UIControl) {
-    print("Callout")
   }
 
   func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
